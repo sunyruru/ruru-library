@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ruru.Messaging</name>
+    </assembly>
+    <members>
+        <member name="M:Ruru.Messaging.IStoreManager.AddMsg(System.Object)">
+            <summary>
+            저장소에 메시지를 추가합니다.
+            </summary>
+            <param name="oMsg">메시지</param>
+        </member>
+        <member name="M:Ruru.Messaging.IStoreManager.Dispose">
+            <summary>
+            Unmanaged Resource의 자원 해제
+            </summary>
+        </member>
+        <member name="M:Ruru.Messaging.IStoreManager.GetConnection(System.String,Ruru.Messaging.StoreManagerMode)">
+            <summary>
+            
+            </summary>
+            <param name="sQueuePath"></param>
+            <param name="oMode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Ruru.Messaging.IStoreManager.ConnectionString">
+            <summary>
+            저장소 연결 문자열
+            </summary>
+        </member>
+        <member name="T:Ruru.Messaging.StoreManagerMode">
+            <summary>
+            MSMQ 사용 모드를 지정합니다.
+            </summary>
+        </member>
+        <member name="F:Ruru.Messaging.StoreManagerMode.Read">
+            <summary>
+            MSMQ 에서 메시지를 읽고 지우는 모드로 연결합니다.
+            </summary>
+        </member>
+        <member name="F:Ruru.Messaging.StoreManagerMode.Write">
+            <summary>
+            MSMQ 에 메시지를 작성 모드로 연결합니다.
+            </summary>
+        </member>
+        <member name="T:Ruru.Messaging.MSMQ.DBStoreManager">
+            <summary>
+            Microsoft Message Queue Repacking Class
+            </summary>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.DBStoreManager.#ctor">
+            <summary>
+            Default Ctor.
+            </summary>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.DBStoreManager.#ctor(System.String)">
+            <summary>
+            MSMQ Path를 입력받아 인스턴스 생성
+            </summary>
+            <param name="sQueuePath">MSMQ 경로</param>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.DBStoreManager.#ctor(System.String,Ruru.Messaging.StoreManagerMode)">
+            <summary>
+            MSMQ Path를 입력받아 인스턴스 생성
+            </summary>
+            <param name="sQueuePath">MSMQ 경로</param>
+            <param name="oMode">MSMQ 사용 모드를 지정</param>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.DBStoreManager.GetConnection(System.String,Ruru.Messaging.StoreManagerMode)">
+            <summary>
+            MSMQ 지정된 큐에 연결합니다.
+            </summary>
+            <param name="sQueuePath">MSMQ 경로</param>
+            <param name="oMode">MSMQ 사용 모드를 지정</param>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.DBStoreManager.AddMsg(System.Object)">
+            <summary>
+            MSMQ에 메시지를 보냅니다.
+            </summary>
+            <param name="oMsg"></param>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.DBStoreManager.GetMsg">
+            <summary>
+            MSMQ에서 메시지를 받아옵니다.
+            </summary>
+            <returns><see cref="T:System.Messaging.Message"/>메시지</returns>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.DBStoreManager.Dispose">
+            <summary>
+            MSMQ 자원을 반환합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Messaging.MSMQ.DBStoreManager.ConnectionString">
+            <summary>
+            연결 문자열
+            </summary>
+        </member>
+        <member name="T:Ruru.Messaging.MSMQ.MSMQStoreManager">
+            <summary>
+            Microsoft Message Queue Repacking Class
+            </summary>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.MSMQStoreManager.#ctor">
+            <summary>
+            Default Ctor.
+            </summary>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.MSMQStoreManager.#ctor(System.String)">
+            <summary>
+            MSMQ Path를 입력받아 인스턴스 생성
+            </summary>
+            <param name="sQueuePath">MSMQ 경로</param>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.MSMQStoreManager.#ctor(System.String,Ruru.Messaging.StoreManagerMode)">
+            <summary>
+            MSMQ Path를 입력받아 인스턴스 생성
+            </summary>
+            <param name="sQueuePath">MSMQ 경로</param>
+            <param name="oMode">MSMQ 사용 모드를 지정</param>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.MSMQStoreManager.GetConnection(System.String,Ruru.Messaging.StoreManagerMode)">
+            <summary>
+            MSMQ 지정된 큐에 연결합니다.
+            </summary>
+            <param name="sQueuePath">MSMQ 경로</param>
+            <param name="oMode">MSMQ 사용 모드를 지정</param>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.MSMQStoreManager.AddMsg(System.Object)">
+            <summary>
+            MSMQ에 메시지를 보냅니다.
+            </summary>
+            <param name="oMsg"></param>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.MSMQStoreManager.GetMsg">
+            <summary>
+            MSMQ에서 메시지를 받아옵니다.
+            </summary>
+            <returns><see cref="T:System.Messaging.Message"/>메시지</returns>
+        </member>
+        <member name="M:Ruru.Messaging.MSMQ.MSMQStoreManager.Dispose">
+            <summary>
+            MSMQ 자원을 반환합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Messaging.MSMQ.MSMQStoreManager.ConnectionString">
+            <summary>
+            연결 문자열
+            </summary>
+        </member>
+    </members>
+</doc>

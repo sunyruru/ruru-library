@@ -1,0 +1,16 @@
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Common\bin\Debug\Ruru.Common.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Common\bin\Debug\Ruru.Common.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Common\obj\Debug\ResolveAssemblyReference.cache
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Common\obj\Debug\Ruru.Common.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Common\obj\Debug\Ruru.Common.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Common\obj\Debug\Ruru.Common.Resources.resources
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Common\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Common\obj\Debug\GenerateResource-ResGen.write.1.tlog
+R:\Dev\Library\RuruLib\Ruru.Common\bin\Debug\Ruru.Common.dll
+R:\Dev\Library\RuruLib\Ruru.Common\bin\Debug\Ruru.Common.pdb
+R:\Dev\Library\RuruLib\Ruru.Common\obj\Debug\ResolveAssemblyReference.cache
+R:\Dev\Library\RuruLib\Ruru.Common\obj\Debug\Ruru.Common.Resources.resources
+R:\Dev\Library\RuruLib\Ruru.Common\obj\Debug\GenerateResource-ResGen.read.1.tlog
+R:\Dev\Library\RuruLib\Ruru.Common\obj\Debug\GenerateResource-ResGen.write.1.tlog
+R:\Dev\Library\RuruLib\Ruru.Common\obj\Debug\Ruru.Common.dll
+R:\Dev\Library\RuruLib\Ruru.Common\obj\Debug\Ruru.Common.pdb

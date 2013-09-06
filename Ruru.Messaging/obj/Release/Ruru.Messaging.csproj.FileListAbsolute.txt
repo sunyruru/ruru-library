@@ -1,0 +1,10 @@
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Messaging\bin\Release\Ruru.Messaging.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Messaging\bin\Release\Ruru.Messaging.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Messaging\obj\Release\ResolveAssemblyReference.cache
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Messaging\obj\Release\Ruru.Messaging.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Messaging\obj\Release\Ruru.Messaging.pdb
+C:\Ruru\Src\STXEP릴리즈\Ruru.Messaging\bin\Release\Ruru.Messaging.dll
+C:\Ruru\Src\STXEP릴리즈\Ruru.Messaging\bin\Release\Ruru.Messaging.pdb
+C:\Ruru\Src\STXEP릴리즈\Ruru.Messaging\obj\Release\ResolveAssemblyReference.cache
+C:\Ruru\Src\STXEP릴리즈\Ruru.Messaging\obj\Release\Ruru.Messaging.dll
+C:\Ruru\Src\STXEP릴리즈\Ruru.Messaging\obj\Release\Ruru.Messaging.pdb

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="DNS Part">
+    <Position X="0.5" Y="0.5" Height="0.542" Width="4.992" />
+  </Comment>
+  <Comment CommentText="Mail Part">
+    <Position X="5.979" Y="0.5" Height="0.542" Width="1.492" />
+  </Comment>
+  <Comment CommentText="Network Part">
+    <Position X="8" Y="0.5" Height="0.542" Width="5.002" />
+  </Comment>
+  <Comment CommentText="Device Part">
+    <Position X="13.479" Y="0.5" Height="0.542" Width="1.533" />
+  </Comment>
+  <Class Name="Ruru.Net.MailSendManager">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCAAAEAAAAACEAggAAAAAAACAAECAIgAABgABAAAAE=</HashCode>
+      <FileName>MailSendManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Net.DnsUtil">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAAAABAAAAAEAAAACAIIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DnsUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Net.DnsQuery">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAABAAAAAAAAAEAAAAAAAAABAA=</HashCode>
+      <FileName>DnsUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Net.DnsResult">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAYAAAAAAAAAAAAAAAAAAAggAAAoAAAAAAA=</HashCode>
+      <FileName>DnsUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Net.ParseDnsResult">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAEAAAAEAAAAAAAEBIAQAAgAAAAAAAA=</HashCode>
+      <FileName>DnsUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Net.NetworkConnection" BaseTypeListCollapsed="true">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACQAAAAAAoAAAAAAAAAAACAAAgAAAAAABAA=</HashCode>
+      <FileName>NetworkConnection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Ruru.Net.NetResource">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAECAAEACAAAAAAQAAEAAARAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NetworkConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Net.InternetCheck">
+    <Position X="13.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAgAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InternetCheck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Ruru.Net.DnsRecordType">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>DnsUtil.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ruru.Net.ResourceScope">
+    <Position X="11.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAgAAQAAAAAAAAAAAAAAAAQAAAAAAAABAAAA=</HashCode>
+      <FileName>NetworkConnection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ruru.Net.ResourceType">
+    <Position X="9.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAA=</HashCode>
+      <FileName>NetworkConnection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ruru.Net.ResourceDisplaytype">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAFAAAACAACAAAAAAQBAAAgAEAAAAAAAAAgQAAAA=</HashCode>
+      <FileName>NetworkConnection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ruru.Net.LogonType">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAgAABAAAAABAgAAIAAAAAAAAAAQAAA=</HashCode>
+      <FileName>NetworkConnection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ruru.Net.LogonProvider">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEQAAAAAACAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>NetworkConnection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

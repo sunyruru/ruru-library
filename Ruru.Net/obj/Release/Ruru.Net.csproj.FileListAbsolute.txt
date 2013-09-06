@@ -1,0 +1,14 @@
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Release\Ruru.Net.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Release\Ruru.Net.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Release\Ruru.Common.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Release\Ruru.Common.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\obj\Release\ResolveAssemblyReference.cache
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\obj\Release\Ruru.Net.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\obj\Release\Ruru.Net.pdb
+C:\Ruru\Src\STXEP릴리즈\Ruru.Net\bin\Release\Ruru.Net.dll
+C:\Ruru\Src\STXEP릴리즈\Ruru.Net\bin\Release\Ruru.Net.pdb
+C:\Ruru\Src\STXEP릴리즈\Ruru.Net\bin\Release\Ruru.Common.dll
+C:\Ruru\Src\STXEP릴리즈\Ruru.Net\bin\Release\Ruru.Common.pdb
+C:\Ruru\Src\STXEP릴리즈\Ruru.Net\obj\Release\ResolveAssemblyReference.cache
+C:\Ruru\Src\STXEP릴리즈\Ruru.Net\obj\Release\Ruru.Net.dll
+C:\Ruru\Src\STXEP릴리즈\Ruru.Net\obj\Release\Ruru.Net.pdb

@@ -1,0 +1,16 @@
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Debug\Ruru.Net.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Debug\Ruru.Net.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\obj\Debug\ResolveAssemblyReference.cache
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\obj\Debug\Ruru.Net.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\obj\Debug\Ruru.Net.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Debug\Ruru.Common.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Debug\Ruru.Common.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.Net\bin\Debug\Ruru.Common.xml
+R:\Dev\Library\RuruLib\Ruru.Net\bin\Debug\Ruru.Net.dll
+R:\Dev\Library\RuruLib\Ruru.Net\bin\Debug\Ruru.Net.pdb
+R:\Dev\Library\RuruLib\Ruru.Net\bin\Debug\Ruru.Common.dll
+R:\Dev\Library\RuruLib\Ruru.Net\bin\Debug\Ruru.Common.pdb
+R:\Dev\Library\RuruLib\Ruru.Net\bin\Debug\Ruru.Common.xml
+R:\Dev\Library\RuruLib\Ruru.Net\obj\Debug\ResolveAssemblyReference.cache
+R:\Dev\Library\RuruLib\Ruru.Net\obj\Debug\Ruru.Net.dll
+R:\Dev\Library\RuruLib\Ruru.Net\obj\Debug\Ruru.Net.pdb

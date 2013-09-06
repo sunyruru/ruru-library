@@ -1,0 +1,10 @@
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\bin\Release\Ruru.XML.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\bin\Release\Ruru.XML.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\obj\Release\ResolveAssemblyReference.cache
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\obj\Release\Ruru.XML.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\obj\Release\Ruru.XML.pdb
+C:\Ruru\Src\STXEP릴리즈\Ruru.XML\bin\Release\Ruru.XML.dll
+C:\Ruru\Src\STXEP릴리즈\Ruru.XML\bin\Release\Ruru.XML.pdb
+C:\Ruru\Src\STXEP릴리즈\Ruru.XML\obj\Release\ResolveAssemblyReference.cache
+C:\Ruru\Src\STXEP릴리즈\Ruru.XML\obj\Release\Ruru.XML.dll
+C:\Ruru\Src\STXEP릴리즈\Ruru.XML\obj\Release\Ruru.XML.pdb

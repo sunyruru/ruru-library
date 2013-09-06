@@ -1,0 +1,10 @@
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\bin\Debug\Ruru.XML.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\bin\Debug\Ruru.XML.pdb
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\obj\Debug\ResolveAssemblyReference.cache
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\obj\Debug\Ruru.XML.dll
+C:\Ruru\2.DEV\x.Library\Ruru\Ruru.XML\obj\Debug\Ruru.XML.pdb
+R:\Dev\Library\RuruLib\Ruru.XML\bin\Debug\Ruru.XML.dll
+R:\Dev\Library\RuruLib\Ruru.XML\bin\Debug\Ruru.XML.pdb
+R:\Dev\Library\RuruLib\Ruru.XML\obj\Debug\ResolveAssemblyReference.cache
+R:\Dev\Library\RuruLib\Ruru.XML\obj\Debug\Ruru.XML.dll
+R:\Dev\Library\RuruLib\Ruru.XML\obj\Debug\Ruru.XML.pdb

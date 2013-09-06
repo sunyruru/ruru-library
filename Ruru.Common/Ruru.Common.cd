@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ruru.Common.INIParser">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAACAAAAAACAAAQAAAAAAQAAAAA=</HashCode>
+      <FileName>INIParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.DBManager">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ruru.Common.DBManager.DiffLocation">
+        <TypeIdentifier>
+          <NewMemberFileName>DBManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAAAAAAAAAFAMAAiAEgAACEACCRUAAAAAA=</HashCode>
+      <FileName>DBManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ruru.Common.LogWriter">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ruru.Common.LogWriter.LogType">
+        <TypeIdentifier>
+          <NewMemberFileName>LogWriter.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAAgAACAEAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LogWriter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.ProcessLaunch">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAABAAAAkAAQCBAAEAAAAAAIIAAAAAASAgAoCCEAAA=</HashCode>
+      <FileName>ProcessLaunch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.ConsoleUtil">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ConsoleUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.Win32.RegistryAccessor" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Win32\RegistryAccess.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ruru.Common.Win32.RegistryAccessException" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Win32\RegistryAccessException.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ruru.Common.Win32.RegistryKeyBase">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAYAJABAAAAAgAAAEAUAAgQBAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Win32\RegistryKeyBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.Win32.RegistryKeyWrapper">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAEAUAAAQAAAABAAAAAACAAAA=</HashCode>
+      <FileName>Win32\RegistryKeyWrapper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ruru.Common.ResourceManagerHelper">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAABAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>ResourceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.ServiceManager">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Ruru.Common.ServiceManager.ServiceStatusClass" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ServiceManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ServiceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.Converter.ConvertBase">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converter\ConvertBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.Converter.XmlConvert">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converter\XmlConvert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.Converter.Base64Convert">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Converter\Base64Convert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.Converter.FileSize">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ruru.Common.Converter.FileSize.UNITS">
+        <TypeIdentifier>
+          <NewMemberFileName>Converter\FileSize.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgCBKEAAAAAAAAAAAAAAAAAQAAAAGQIAg=</HashCode>
+      <FileName>Converter\FileSize.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ruru.Common.Control.ExtendControl">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Control\ExtendControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Ruru.Common.Win32.IRegistryAccessor">
+    <Position X="9.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Win32\IRegistryAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Ruru.Common.Win32.IRegistryKey">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAABAAAAAgAAAAAUAAgABAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Win32\IRegistryKey.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
