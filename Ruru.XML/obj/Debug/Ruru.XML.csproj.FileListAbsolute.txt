@@ -8,3 +8,8 @@ R:\Dev\Library\RuruLib\Ruru.XML\bin\Debug\Ruru.XML.pdb
 R:\Dev\Library\RuruLib\Ruru.XML\obj\Debug\ResolveAssemblyReference.cache
 R:\Dev\Library\RuruLib\Ruru.XML\obj\Debug\Ruru.XML.dll
 R:\Dev\Library\RuruLib\Ruru.XML\obj\Debug\Ruru.XML.pdb
+R:\Dev\Library\ruru-library\Ruru.XML\bin\Debug\Ruru.XML.dll
+R:\Dev\Library\ruru-library\Ruru.XML\bin\Debug\Ruru.XML.pdb
+R:\Dev\Library\ruru-library\Ruru.XML\obj\Debug\ResolveAssemblyReference.cache
+R:\Dev\Library\ruru-library\Ruru.XML\obj\Debug\Ruru.XML.dll
+R:\Dev\Library\ruru-library\Ruru.XML\obj\Debug\Ruru.XML.pdb

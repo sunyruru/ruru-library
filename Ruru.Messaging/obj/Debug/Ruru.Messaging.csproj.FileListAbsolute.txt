@@ -8,3 +8,8 @@ R:\Dev\Library\RuruLib\Ruru.Messaging\bin\Debug\Ruru.Messaging.pdb
 R:\Dev\Library\RuruLib\Ruru.Messaging\obj\Debug\ResolveAssemblyReference.cache
 R:\Dev\Library\RuruLib\Ruru.Messaging\obj\Debug\Ruru.Messaging.dll
 R:\Dev\Library\RuruLib\Ruru.Messaging\obj\Debug\Ruru.Messaging.pdb
+R:\Dev\Library\ruru-library\Ruru.Messaging\bin\Debug\Ruru.Messaging.dll
+R:\Dev\Library\ruru-library\Ruru.Messaging\bin\Debug\Ruru.Messaging.pdb
+R:\Dev\Library\ruru-library\Ruru.Messaging\obj\Debug\ResolveAssemblyReference.cache
+R:\Dev\Library\ruru-library\Ruru.Messaging\obj\Debug\Ruru.Messaging.dll
+R:\Dev\Library\ruru-library\Ruru.Messaging\obj\Debug\Ruru.Messaging.pdb
