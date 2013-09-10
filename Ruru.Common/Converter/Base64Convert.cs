@@ -3,9 +3,18 @@
     using System;
     using System.Text;
 
+    /// <summary>
+    /// Base64 String Convert Class
+    /// </summary>
     public partial class Base64Convert : ConvertBase
     {
         #region " Base64Encode "
+        /// <summary>
+        /// Base64 Encoding
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="enc"></param>
+        /// <returns></returns>
         public static string Base64Encode(string src, Encoding enc)
         {
             byte[] arr = null;
@@ -24,6 +33,11 @@
         #endregion
 
         #region " Base64Decode "
+        /// <summary>
+        /// Base64 Decode
+        /// </summary>
+        /// <param name="src"></param>
+        /// <returns></returns>
         public static string Base64Decode(string src)
         {
             string sReturn = "";

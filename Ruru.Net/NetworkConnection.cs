@@ -115,7 +115,16 @@
             return sResult;
         }
 
-        // http://pinvoke.net/default.aspx/advapi32.LogonUser
+        /// <summary>
+        /// http://pinvoke.net/default.aspx/advapi32.LogonUser
+        /// </summary>
+        /// <param name="lpszUsername"></param>
+        /// <param name="lpszDomain"></param>
+        /// <param name="lpszPassword"></param>
+        /// <param name="dwLogonType"></param>
+        /// <param name="dwLogonProvider"></param>
+        /// <param name="phToken"></param>
+        /// <returns></returns>
         [DllImport("advapi32.dll", SetLastError = true)]
         public static extern bool LogonUser(
             string lpszUsername,
@@ -352,7 +361,6 @@
 
         /// <summary>
         /// This logon type is intended for high performance servers to authenticate plaintext passwords.
-
         /// The LogonUser function does not cache credentials for this logon type.
         /// </summary>
         LOGON32_LOGON_NETWORK = 3,
@@ -406,8 +414,17 @@
         /// NOTE: Windows 2000/NT:   The default security provider is NTLM.
         /// </summary>
         LOGON32_PROVIDER_DEFAULT = 0,
+        /// <summary>
+        /// Windows NT 3.5
+        /// </summary>
         LOGON32_PROVIDER_WINNT35 = 1,
+        /// <summary>
+        /// Windows NT 4.0
+        /// </summary>
         LOGON32_PROVIDER_WINNT40 = 2,
+        /// <summary>
+        /// Windows NT 5.0
+        /// </summary>
         LOGON32_PROVIDER_WINNT50 = 3
     }
 }

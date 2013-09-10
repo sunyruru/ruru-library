@@ -12,7 +12,29 @@
         /// <summary>
         /// Size 단위
         /// </summary>
-        public enum UNITS { B, KB, MB, GB, TB }
+        public enum UNITS 
+        {
+            /// <summary>
+            /// Byte
+            /// </summary>
+            B,
+            /// <summary>
+            /// KB
+            /// </summary>
+            KB,
+            /// <summary>
+            /// MB
+            /// </summary>
+            MB,
+            /// <summary>
+            /// GB
+            /// </summary>
+            GB,
+            /// <summary>
+            /// TB
+            /// </summary>
+            TB
+        }
 
         double b = 0;
         double kb = 0;

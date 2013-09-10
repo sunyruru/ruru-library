@@ -67,7 +67,7 @@
         /// </summary>
         /// <param name="sServiceServer">지정된 서버</param>
         /// <exception cref="System.ComponentModel.Win32Exception">An error occurred when accessing a system API.</exception>
-        /// <returns><see cref="System.Collections.Generic.List&lt;ServiceController&gt;>"/> 서비스 목록</returns>
+        /// <returns><see cref="System.Collections.Generic.List&lt;ServiceController&gt;"/> 서비스 목록</returns>
         public static System.Collections.Generic.List<ServiceController> ServiceList(string sServiceServer)
         {
             return new System.Collections.Generic.List<ServiceController>(ServiceController.GetServices(sServiceServer));

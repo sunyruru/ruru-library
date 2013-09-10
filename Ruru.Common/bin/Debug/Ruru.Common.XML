@@ -4,208 +4,6 @@
         <name>Ruru.Common</name>
     </assembly>
     <members>
-        <member name="T:Ruru.Common.Win32.RegistryKeyBase">
-            <summary>
-            Provides access to a registry key sub keys and values.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.Close">
-            <summary>
-            Closes the registry key.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.DoGetValue(System.String)">
-            <summary>
-            Gets an actual value from the registry.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The value from the registry, or <see langword="null"/> if
-            there is no such value.</returns>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.DoOpenSubKey(System.String)">
-            <summary>
-            Gets the sub key for the given key name.
-            </summary>
-            <param name="name">The name fo the key to get.</param>
-            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
-            </returns>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetBoolValue(System.String)">
-            <summary>
-            Gets the boolean value represented by the value for requested name in the registry key.
-            </summary>
-            <remarks>
-            An integer value of 1 is considered <langword>true</langword>, any other 
-            value is considered <langword>false</langword>.
-            </remarks>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The boolean value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an integer representing a boolean.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetEnumValue``1(System.String)">
-            <summary>
-            Gets the enum value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The enum value of type  <typeparamref name="T"/> represented by the value
-            for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an string, or it is a string value but it is not a 
-            valid value name for enum type <typeparamref name="T"/>.</exception>
-            <typeparam name="T">The enum type.</typeparam>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetIntValue(System.String)">
-            <summary>
-            Gets the integer value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The integer value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an integer.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetStringValue(System.String)">
-            <summary>
-            Gets the string value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The string value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not a string.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetTypeValue(System.String)">
-            <summary>
-            Gets the <see cref="T:System.Type"/> value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The instance of <see cref="T:System.Type"/> represented by the value for
-            the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an string, or it is a string value but it is not a 
-            valid type name.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetValueNames">
-            <summary>
-            Gets the names for the values.
-            </summary>
-            <returns>The value names.</returns>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.OpenSubKey(System.String)">
-            <summary>
-            Gets the sub key for the given key name.
-            </summary>
-            <param name="name">The name fo the key to get.</param>
-            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
-            </returns>
-            <exception cref="T:System.ArgumentNullException">when <paramref name="name"/>is <see langword="null"/>.</exception>
-            <exception cref="T:System.ArgumentException">when <paramref name="name"/>is not a valid name.</exception>
-        </member>
-        <member name="P:Ruru.Common.Win32.RegistryKeyBase.IsPolicyKey">
-            <summary>
-            Gets the indication of whether the registry key represents a policy.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Win32.RegistryKeyBase.Name">
-            <summary>
-            Gets the full name of the registry key.
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.Win32.IRegistryKey">
-            <summary>
-            Provides access to a registry key sub keys and values.
-            </summary>
-            <remarks>
-            This interface allows for unit testing without requiring access to the machine's registry.
-            </remarks>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.Close">
-            <summary>
-            Closes the registry key.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetBoolValue(System.String)">
-            <summary>
-            Gets the boolean value represented by the value for requested name in the registry key.
-            </summary>
-            <remarks>
-            An integer value of 1 is considered <langword>true</langword>, any other 
-            value is considered <langword>false</langword>.
-            </remarks>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The boolean value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an integer representing a boolean.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetEnumValue``1(System.String)">
-            <summary>
-            Gets the enum value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The enum value of type  <typeparamref name="T"/> represented by the value
-            for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an string, or it is a string value but it is not a 
-            valid value name for enum type <typeparamref name="T"/>.</exception>
-            <typeparam name="T">The enum type.</typeparam>
-            <devdoc>
-            FxCop message CA1004 is supressed because the T parameter is used to drive the
-            type of the method return value, so it is not possible to provide a method
-            parameter that enables generic parameter inference.
-            </devdoc>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetIntValue(System.String)">
-            <summary>
-            Gets the integer value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The integer value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an integer.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetStringValue(System.String)">
-            <summary>
-            Gets the string value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The string value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not a string.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetTypeValue(System.String)">
-            <summary>
-            Gets the <see cref="T:System.Type"/> value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The instance of <see cref="T:System.Type"/> represented by the value for
-            the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an string, or it is a string value but it is not a 
-            valid type name.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetValueNames">
-            <summary>
-            Gets the names for the values.
-            </summary>
-            <returns>The value names.</returns>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.OpenSubKey(System.String)">
-            <summary>
-            Gets the sub key for the given key name.
-            </summary>
-            <param name="name">The name fo the key to get.</param>
-            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
-            </returns>
-        </member>
-        <member name="P:Ruru.Common.Win32.IRegistryKey.IsPolicyKey">
-            <summary>
-            Gets the indication of whether the registry key represents a policy.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Win32.IRegistryKey.Name">
-            <summary>
-            Gets the full name of the registry key.
-            </summary>
-        </member>
         <member name="T:Ruru.Common.DBManager">
             <summary>
             Database 관련 Class
@@ -349,18 +147,619 @@
             DBManager 에서 발생한 가장 마지막 Exception을 반환합니다.
             </summary>
         </member>
-        <member name="T:Ruru.Common.ConsoleUtil">
+        <member name="T:Ruru.Common.Converter.ConvertBase">
             <summary>
-            Windows System의 Colsole 명령어를 실행할 수 있도록 함
+            Convert Base Class
             </summary>
         </member>
-        <member name="M:Ruru.Common.ConsoleUtil.Run(System.String,System.String)">
+        <member name="T:Ruru.Common.Converter.FileSize">
             <summary>
-            Windows System의 Console 명령어와 인자를 받아 명령어 실행 후 결과를 반환
+            파일 사이즈를 간편하게 표시해주는 클래스
             </summary>
-            <param name="FileName"><see cref="T:System.String"/> 실행 파일명</param>
-            <param name="Argments"><see cref="T:System.String"/> 명령어 인자</param>
-            <returns><see cref="T:System.String"/> 명령 실행 결과</returns>
+            <example>
+            FileSize.GetSize(1024L);
+            Expect return string : "1KB"
+            </example>
+        </member>
+        <member name="M:Ruru.Common.Converter.FileSize.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Converter.FileSize.#ctor(System.Double)">
+            <summary>
+            Size를 지정한 Constructor
+            </summary>
+            <param name="size"></param>
+        </member>
+        <member name="M:Ruru.Common.Converter.FileSize.GetSize(System.Double)">
+            <summary>
+            사이즈를 지정하여 그에 해당하는 가장 짧은 파일 크기 문자열 반환
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.FormatException"></exception>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Converter.FileSize.ToString">
+            <summary>
+            파일사이즈의 가장 짧은 문자열로 반환
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.FormatException"></exception>
+            <returns></returns>
+        </member>
+        <member name="P:Ruru.Common.Converter.FileSize.B">
+            <summary>
+            Byte Size
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Converter.FileSize.KB">
+            <summary>
+            KB Size
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Converter.FileSize.MB">
+            <summary>
+            MB Size
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Converter.FileSize.GB">
+            <summary>
+            GB Size
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Converter.FileSize.TB">
+            <summary>
+            TB Size
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Converter.FileSize.UNITS">
+            <summary>
+            Size 단위
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.B">
+            <summary>
+            Byte
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.KB">
+            <summary>
+            KB
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.MB">
+            <summary>
+            MB
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.GB">
+            <summary>
+            GB
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.TB">
+            <summary>
+            TB
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Win32.RegistryAccessException">
+            <summary>
+            Represents an error that occurs while accessing the registry.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with a specified error message 
+            and a reference to the inner exception that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="inner">The inner exception reference.</param>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Ruru.Common.Win32.IRegistryKey">
+            <summary>
+            Provides access to a registry key sub keys and values.
+            </summary>
+            <remarks>
+            This interface allows for unit testing without requiring access to the machine's registry.
+            </remarks>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.Close">
+            <summary>
+            Closes the registry key.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetBoolValue(System.String)">
+            <summary>
+            Gets the boolean value represented by the value for requested name in the registry key.
+            </summary>
+            <remarks>
+            An integer value of 1 is considered <langword>true</langword>, any other 
+            value is considered <langword>false</langword>.
+            </remarks>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The boolean value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an integer representing a boolean.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetEnumValue``1(System.String)">
+            <summary>
+            Gets the enum value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The enum value of type  <typeparamref name="T"/> represented by the value
+            for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an string, or it is a string value but it is not a 
+            valid value name for enum type <typeparamref name="T"/>.</exception>
+            <typeparam name="T">The enum type.</typeparam>
+            <devdoc>
+            FxCop message CA1004 is supressed because the T parameter is used to drive the
+            type of the method return value, so it is not possible to provide a method
+            parameter that enables generic parameter inference.
+            </devdoc>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetIntValue(System.String)">
+            <summary>
+            Gets the integer value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The integer value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an integer.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetStringValue(System.String)">
+            <summary>
+            Gets the string value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The string value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not a string.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetTypeValue(System.String)">
+            <summary>
+            Gets the <see cref="T:System.Type"/> value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The instance of <see cref="T:System.Type"/> represented by the value for
+            the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an string, or it is a string value but it is not a 
+            valid type name.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetValueNames">
+            <summary>
+            Gets the names for the values.
+            </summary>
+            <returns>The value names.</returns>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.OpenSubKey(System.String)">
+            <summary>
+            Gets the sub key for the given key name.
+            </summary>
+            <param name="name">The name fo the key to get.</param>
+            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryKey.IsPolicyKey">
+            <summary>
+            Gets the indication of whether the registry key represents a policy.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryKey.Name">
+            <summary>
+            Gets the full name of the registry key.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Win32.RegistryKeyBase">
+            <summary>
+            Provides access to a registry key sub keys and values.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.Close">
+            <summary>
+            Closes the registry key.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.DoGetValue(System.String)">
+            <summary>
+            Gets an actual value from the registry.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The value from the registry, or <see langword="null"/> if
+            there is no such value.</returns>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.DoOpenSubKey(System.String)">
+            <summary>
+            Gets the sub key for the given key name.
+            </summary>
+            <param name="name">The name fo the key to get.</param>
+            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetBoolValue(System.String)">
+            <summary>
+            Gets the boolean value represented by the value for requested name in the registry key.
+            </summary>
+            <remarks>
+            An integer value of 1 is considered <langword>true</langword>, any other 
+            value is considered <langword>false</langword>.
+            </remarks>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The boolean value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an integer representing a boolean.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetEnumValue``1(System.String)">
+            <summary>
+            Gets the enum value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The enum value of type  <typeparamref name="T"/> represented by the value
+            for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an string, or it is a string value but it is not a 
+            valid value name for enum type <typeparamref name="T"/>.</exception>
+            <typeparam name="T">The enum type.</typeparam>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetIntValue(System.String)">
+            <summary>
+            Gets the integer value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The integer value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an integer.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetStringValue(System.String)">
+            <summary>
+            Gets the string value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The string value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not a string.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetTypeValue(System.String)">
+            <summary>
+            Gets the <see cref="T:System.Type"/> value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The instance of <see cref="T:System.Type"/> represented by the value for
+            the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an string, or it is a string value but it is not a 
+            valid type name.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetValueNames">
+            <summary>
+            Gets the names for the values.
+            </summary>
+            <returns>The value names.</returns>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.OpenSubKey(System.String)">
+            <summary>
+            Gets the sub key for the given key name.
+            </summary>
+            <param name="name">The name fo the key to get.</param>
+            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">when <paramref name="name"/>is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">when <paramref name="name"/>is not a valid name.</exception>
+        </member>
+        <member name="P:Ruru.Common.Win32.RegistryKeyBase.IsPolicyKey">
+            <summary>
+            Gets the indication of whether the registry key represents a policy.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Win32.RegistryKeyBase.Name">
+            <summary>
+            Gets the full name of the registry key.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.ServiceManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.ServiceManager.ServiceStatus(System.String,System.String)">
+            <summary>
+            지정된 서버의 서비스 명을 찾아 있을 경우 서비스 상태를 반환
+            </summary>
+            <param name="sServiceName">서비스 이름</param>
+            <param name="sServiceServer">지정된 서버</param>
+            <returns><see cref="T:System.ServiceProcess.ServiceControllerStatus"/>서비스 상태 (Nillable)</returns>
+        </member>
+        <member name="M:Ruru.Common.ServiceManager.ServiceList(System.String)">
+            <summary>
+            지정된 서버의 서비스 목록을 반환
+            </summary>
+            <param name="sServiceServer">지정된 서버</param>
+            <exception cref="T:System.ComponentModel.Win32Exception">An error occurred when accessing a system API.</exception>
+            <returns><see cref="T:System.Collections.Generic.List`1"/> 서비스 목록</returns>
+        </member>
+        <member name="T:Ruru.Common.ServiceManager.ServiceStatusClass">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.ServiceManager.ServiceStatusClass.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.ServiceManager.ServiceStatusClass.Service">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.ProcessLaunch">
+            <summary>
+            보이지 않게 Background로 Process 실행을 위한 클래스
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.ProcessLaunch.#ctor">
+            <summary>
+            기본 생성자
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.ProcessLaunch.RunProcess">
+            <summary>
+            프로세스 실행
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.Args">
+            <summary>
+            명령 실행 인자값을 설정합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.ErrorMessage">
+            <summary>
+            오류 메시지를 확인합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.Filename">
+            <summary>
+            실행할 파일명을 지정합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.ProcessOutput">
+            <summary>
+            프로그램 실행 후 반환되는 결과값을 가집니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.ProgramFilesDir">
+            <summary>
+            ProgramFiles 디렉토리가 지정됩니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.UseShellExecute">
+            <summary>
+            실행 시 Console Shell 창을 사용할지 여부 지정
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.WindowStyle">
+            <summary>
+            프로세스 창 스타일을 지정
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.WorkingDir">
+            <summary>
+            프로세스의 작업 디렉토리 지정
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.ResourceManagerHelper">
+            <summary>
+            Encapsulates a ResourceManager object used to acquire localized
+            strings specific to this tool.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.ResourceManagerHelper.CreateResourceManager(System.String)">
+            <summary>
+            지정된 타입의 ResourceManager 생성
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <param name="type"></param>
+        </member>
+        <member name="M:Ruru.Common.ResourceManagerHelper.GetString(System.String)">
+            <summary>
+            ResourceManager에서 문자열을 가져옴
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <exception cref="T:System.Resources.MissingManifestResourceException"></exception>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ruru.Common.Win32.IRegistryAccessor">
+            <summary>
+            Provides access to the registry.
+            </summary>
+            <remarks>
+            This interface allows for unit testing without requiring access to the machine's registry.
+            </remarks>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryAccessor.CurrentUser">
+            <summary>
+            Gets registry key HKCU.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryAccessor.LocalMachine">
+            <summary>
+            Gets registry key HKLM.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.INIParser">
+            <summary>
+            INI 설정파일을 사용할 수 있도록 합니다.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.INIParser.#ctor(System.String)">
+            <summary>
+            INI 파일의 경로를 지정합니다.
+            </summary>
+            <param name="INIPath">INI 파일 경로</param>
+        </member>
+        <member name="M:Ruru.Common.INIParser.WriteValue(System.String,System.String,System.String)">
+            <summary>
+            INI 파일에 값을 입력
+            </summary>
+            <param name="Section">섹션</param>
+            <param name="Key">키</param>
+            <param name="Value">값</param>
+        </member>
+        <member name="M:Ruru.Common.INIParser.ReadValue(System.String,System.String)">
+            <summary>
+            INI 파일의 정보를 읽음
+            </summary>
+            <param name="Section">섹션</param>
+            <param name="Key">키</param>
+            <returns>값</returns>
+        </member>
+        <member name="T:Ruru.Common.Resources">
+            <summary>
+              지역화된 문자열 등을 찾기 위한 강력한 형식의 리소스 클래스입니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ResourceManager">
+            <summary>
+              이 클래스에서 사용하는 캐시된 ResourceManager 인스턴스를 반환합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.Culture">
+            <summary>
+              이 강력한 형식의 리소스 클래스를 사용하여 모든 리소스 조회에 대한 현재 스레드의 CurrentUICulture
+              속성을 재정의합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionArgumentEmpty">
+            <summary>
+              {0} 인자 값이 없음과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionMissingRegistryValue">
+            <summary>
+              {0}:{1} 값이 없음과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueNotEnumValue">
+            <summary>
+              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueNotTypeName">
+            <summary>
+              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueOfWrongType">
+            <summary>
+              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.LogWriter">
+            <summary>
+            Log 파일 생성 클래스
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.LogWriter.#ctor">
+            <summary>
+            기본 생성자
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.LogWriter.#ctor(System.String)">
+            <summary>
+            로그 파일 경로 지정 생성자
+            </summary>
+            <param name="sLogPath">로그 파일 경로</param>
+        </member>
+        <member name="M:Ruru.Common.LogWriter.#ctor(System.String,System.String)">
+            <summary>
+            로그 파일 경로, 프로젝트 폴더명 지정 생성자
+            </summary>
+            <param name="sLogPath">로그 파일 경로</param>
+            <param name="sProjectName">프로젝트 폴더명</param>
+        </member>
+        <member name="M:Ruru.Common.LogWriter.WriteLog(System.String)">
+            <summary>
+            로그파일에 메시지 작성
+            </summary>
+            <param name="sMessage">메시지</param>
+        </member>
+        <member name="M:Ruru.Common.LogWriter.GetFileName(System.String)">
+            <summary>
+            파일 경로의 파일을 읽음
+            </summary>
+            <param name="strPath">파일 경로</param>
+            <returns>파일 내용</returns>
+        </member>
+        <member name="M:Ruru.Common.LogWriter.GetFileName(System.String,System.Int32)">
+            <summary>
+            파일 경로의 파일을 지정 위치부터 읽음
+            </summary>
+            <param name="strPath">파일 경로</param>
+            <param name="idx">파일 커서 위치</param>
+            <returns>파일 내용</returns>
+        </member>
+        <member name="M:Ruru.Common.LogWriter.Dispose">
+            <summary>
+            사용 Unmanaged 자원의 해제
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.LogWriter.LogType">
+            <summary>
+            로그 타입
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.LogWriter.LogType.USER">
+            <summary>
+            사용자
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.LogWriter.LogType.DEPT">
+            <summary>
+            부서
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Converter.Base64Convert">
+            <summary>
+            Base64 String Convert Class
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Converter.Base64Convert.Base64Encode(System.String,System.Text.Encoding)">
+            <summary>
+            Base64 Encoding
+            </summary>
+            <param name="src"></param>
+            <param name="enc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Converter.Base64Convert.Base64Decode(System.String)">
+            <summary>
+            Base64 Decode
+            </summary>
+            <param name="src"></param>
+            <returns></returns>
         </member>
         <!-- 잘못된 형식의 XML 주석은 "T:Ruru.Common.Control.ExtendControl" 멤버에 대해 무시됩니다. -->
         <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``1(System.Windows.Forms.Control,System.Func{``0})">
@@ -483,367 +882,23 @@
             <param name="argument3"></param>
             <param name="argument4"></param>
         </member>
-        <member name="T:Ruru.Common.Win32.IRegistryAccessor">
+        <member name="T:Ruru.Common.ConsoleUtil">
             <summary>
-            Provides access to the registry.
-            </summary>
-            <remarks>
-            This interface allows for unit testing without requiring access to the machine's registry.
-            </remarks>
-        </member>
-        <member name="P:Ruru.Common.Win32.IRegistryAccessor.CurrentUser">
-            <summary>
-            Gets registry key HKCU.
+            Windows System의 Colsole 명령어를 실행할 수 있도록 함
             </summary>
         </member>
-        <member name="P:Ruru.Common.Win32.IRegistryAccessor.LocalMachine">
+        <member name="M:Ruru.Common.ConsoleUtil.Run(System.String,System.String)">
             <summary>
-            Gets registry key HKLM.
+            Windows System의 Console 명령어와 인자를 받아 명령어 실행 후 결과를 반환
             </summary>
+            <param name="FileName"><see cref="T:System.String"/> 실행 파일명</param>
+            <param name="Argments"><see cref="T:System.String"/> 명령어 인자</param>
+            <returns><see cref="T:System.String"/> 명령 실행 결과</returns>
         </member>
-        <member name="T:Ruru.Common.ProcessLaunch">
+        <member name="T:Ruru.Common.Converter.XmlConvert">
             <summary>
-            보이지 않게 Background로 Process 실행을 위한 클래스
+            XML Convert Class
             </summary>
-        </member>
-        <member name="M:Ruru.Common.ProcessLaunch.#ctor">
-            <summary>
-            기본 생성자
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.ProcessLaunch.RunProcess">
-            <summary>
-            프로세스 실행
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.Args">
-            <summary>
-            명령 실행 인자값을 설정합니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.ErrorMessage">
-            <summary>
-            오류 메시지를 확인합니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.Filename">
-            <summary>
-            실행할 파일명을 지정합니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.ProcessOutput">
-            <summary>
-            프로그램 실행 후 반환되는 결과값을 가집니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.ProgramFilesDir">
-            <summary>
-            ProgramFiles 디렉토리가 지정됩니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.UseShellExecute">
-            <summary>
-            실행 시 Console Shell 창을 사용할지 여부 지정
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.WindowStyle">
-            <summary>
-            프로세스 창 스타일을 지정
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.WorkingDir">
-            <summary>
-            프로세스의 작업 디렉토리 지정
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.Converter.FileSize">
-            <summary>
-            파일 사이즈를 간편하게 표시해주는 클래스
-            </summary>
-            <example>
-            FileSize.GetSize(1024L);
-            Expect return string : "1KB"
-            </example>
-        </member>
-        <member name="M:Ruru.Common.Converter.FileSize.#ctor">
-            <summary>
-            Constructor
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Converter.FileSize.#ctor(System.Double)">
-            <summary>
-            Size를 지정한 Constructor
-            </summary>
-            <param name="size"></param>
-        </member>
-        <member name="M:Ruru.Common.Converter.FileSize.GetSize(System.Double)">
-            <summary>
-            사이즈를 지정하여 그에 해당하는 가장 짧은 파일 크기 문자열 반환
-            </summary>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.FormatException"></exception>
-            <param name="size"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Ruru.Common.Converter.FileSize.ToString">
-            <summary>
-            파일사이즈의 가장 짧은 문자열로 반환
-            </summary>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.FormatException"></exception>
-            <returns></returns>
-        </member>
-        <member name="P:Ruru.Common.Converter.FileSize.B">
-            <summary>
-            Byte Size
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Converter.FileSize.KB">
-            <summary>
-            KB Size
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Converter.FileSize.MB">
-            <summary>
-            MB Size
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Converter.FileSize.GB">
-            <summary>
-            GB Size
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Converter.FileSize.TB">
-            <summary>
-            TB Size
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.Converter.FileSize.UNITS">
-            <summary>
-            Size 단위
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.ServiceManager">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.ServiceManager.ServiceStatus(System.String,System.String)">
-            <summary>
-            지정된 서버의 서비스 명을 찾아 있을 경우 서비스 상태를 반환
-            </summary>
-            <param name="sServiceName">서비스 이름</param>
-            <param name="sServiceServer">지정된 서버</param>
-            <returns><see cref="T:System.ServiceProcess.ServiceControllerStatus"/>서비스 상태 (Nillable)</returns>
-        </member>
-        <member name="M:Ruru.Common.ServiceManager.ServiceList(System.String)">
-            <summary>
-            지정된 서버의 서비스 목록을 반환
-            </summary>
-            <param name="sServiceServer">지정된 서버</param>
-            <exception cref="T:System.ComponentModel.Win32Exception">An error occurred when accessing a system API.</exception>
-            <returns><see cref="!:System.Collections.Generic.List&lt;ServiceController&gt;&gt;"/> 서비스 목록</returns>
-        </member>
-        <member name="T:Ruru.Common.ServiceManager.ServiceStatusClass">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Ruru.Common.ServiceManager.ServiceStatusClass.Status">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Ruru.Common.ServiceManager.ServiceStatusClass.Service">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.INIParser">
-            <summary>
-            INI 설정파일을 사용할 수 있도록 합니다.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.INIParser.#ctor(System.String)">
-            <summary>
-            INI 파일의 경로를 지정합니다.
-            </summary>
-            <param name="INIPath">INI 파일 경로</param>
-        </member>
-        <member name="M:Ruru.Common.INIParser.WriteValue(System.String,System.String,System.String)">
-            <summary>
-            INI 파일에 값을 입력
-            </summary>
-            <param name="Section">섹션</param>
-            <param name="Key">키</param>
-            <param name="Value">값</param>
-        </member>
-        <member name="M:Ruru.Common.INIParser.ReadValue(System.String,System.String)">
-            <summary>
-            INI 파일의 정보를 읽음
-            </summary>
-            <param name="Section">섹션</param>
-            <param name="Key">키</param>
-            <returns>값</returns>
-        </member>
-        <member name="T:Ruru.Common.LogWriter">
-            <summary>
-            Log 파일 생성 클래스
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.LogWriter.#ctor">
-            <summary>
-            기본 생성자
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.LogWriter.#ctor(System.String)">
-            <summary>
-            로그 파일 경로 지정 생성자
-            </summary>
-            <param name="sLogPath">로그 파일 경로</param>
-        </member>
-        <member name="M:Ruru.Common.LogWriter.#ctor(System.String,System.String)">
-            <summary>
-            로그 파일 경로, 프로젝트 폴더명 지정 생성자
-            </summary>
-            <param name="sLogPath">로그 파일 경로</param>
-            <param name="sProjectName">프로젝트 폴더명</param>
-        </member>
-        <member name="M:Ruru.Common.LogWriter.WriteLog(System.String)">
-            <summary>
-            로그파일에 메시지 작성
-            </summary>
-            <param name="sMessage">메시지</param>
-        </member>
-        <member name="M:Ruru.Common.LogWriter.GetFileName(System.String)">
-            <summary>
-            파일 경로의 파일을 읽음
-            </summary>
-            <param name="strPath">파일 경로</param>
-            <returns>파일 내용</returns>
-        </member>
-        <member name="M:Ruru.Common.LogWriter.GetFileName(System.String,System.Int32)">
-            <summary>
-            파일 경로의 파일을 지정 위치부터 읽음
-            </summary>
-            <param name="strPath">파일 경로</param>
-            <param name="idx">파일 커서 위치</param>
-            <returns>파일 내용</returns>
-        </member>
-        <member name="M:Ruru.Common.LogWriter.Dispose">
-            <summary>
-            사용 Unmanaged 자원의 해제
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.LogWriter.LogType">
-            <summary>
-            로그 타입
-            </summary>
-        </member>
-        <member name="F:Ruru.Common.LogWriter.LogType.USER">
-            <summary>
-            사용자
-            </summary>
-        </member>
-        <member name="F:Ruru.Common.LogWriter.LogType.DEPT">
-            <summary>
-            부서
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.Win32.RegistryAccessException">
-            <summary>
-            Represents an error that occurs while accessing the registry.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with a specified error message.
-            </summary>
-            <param name="message">The message that describes the error.</param>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.String,System.Exception)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with a specified error message 
-            and a reference to the inner exception that is the cause of this exception. 
-            </summary>
-            <param name="message">The message that describes the error.</param>
-            <param name="inner">The inner exception reference.</param>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with serialized data.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-        </member>
-        <member name="T:Ruru.Common.Resources">
-            <summary>
-              지역화된 문자열 등을 찾기 위한 강력한 형식의 리소스 클래스입니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Resources.ResourceManager">
-            <summary>
-              이 클래스에서 사용하는 캐시된 ResourceManager 인스턴스를 반환합니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Resources.Culture">
-            <summary>
-              이 강력한 형식의 리소스 클래스를 사용하여 모든 리소스 조회에 대한 현재 스레드의 CurrentUICulture
-              속성을 재정의합니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Resources.ExceptionArgumentEmpty">
-            <summary>
-              {0} 인자 값이 없음과(와) 유사한 지역화된 문자열을 찾습니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Resources.ExceptionMissingRegistryValue">
-            <summary>
-              {0}:{1} 값이 없음과(와) 유사한 지역화된 문자열을 찾습니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueNotEnumValue">
-            <summary>
-              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueNotTypeName">
-            <summary>
-              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueOfWrongType">
-            <summary>
-              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.ResourceManagerHelper">
-            <summary>
-            Encapsulates a ResourceManager object used to acquire localized
-            strings specific to this tool.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.ResourceManagerHelper.CreateResourceManager(System.String)">
-            <summary>
-            지정된 타입의 ResourceManager 생성
-            </summary>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <param name="type"></param>
-        </member>
-        <member name="M:Ruru.Common.ResourceManagerHelper.GetString(System.String)">
-            <summary>
-            ResourceManager에서 문자열을 가져옴
-            </summary>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.InvalidOperationException"></exception>
-            <exception cref="T:System.Resources.MissingManifestResourceException"></exception>
-            <param name="name"></param>
-            <returns></returns>
         </member>
     </members>
 </doc>

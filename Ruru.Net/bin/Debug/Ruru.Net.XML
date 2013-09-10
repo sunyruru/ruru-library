@@ -4,6 +4,21 @@
         <name>Ruru.Net</name>
     </assembly>
     <members>
+        <member name="T:Ruru.Net.InternetCheck">
+            <summary>
+            인터넷 연결여부 체크
+            </summary>
+        </member>
+        <member name="P:Ruru.Net.InternetCheck.IsInternetConnected">
+            <summary>
+            인터넷 연결여부
+            </summary>
+        </member>
+        <member name="P:Ruru.Net.InternetCheck.GetLocalIPHost">
+            <summary>
+            Get Local IP
+            </summary>
+        </member>
         <member name="T:Ruru.Net.MailSendManager">
             <summary>
             메일 발송 도우미
@@ -112,16 +127,6 @@
             </summary>
             <value>기본 자격 증명이 사용되면 true이고, 그렇지 않으면 false입니다. 기본값은 false입니다.</value>
             <exception cref="T:System.InvalidOperationException">전자 메일을 보내는 동안 이 속성 값을 변경한 경우</exception>
-        </member>
-        <member name="T:Ruru.Net.InternetCheck">
-            <summary>
-            인터넷 연결여부 체크
-            </summary>
-        </member>
-        <member name="P:Ruru.Net.InternetCheck.IsInternetConnected">
-            <summary>
-            인터넷 연결여부
-            </summary>
         </member>
         <member name="T:Ruru.Net.DnsRecordType">
             <summary>
@@ -272,6 +277,18 @@
             지속적인 네트워크 연결 해제.
             </summary>
             <param name="Path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Net.NetworkConnection.LogonUser(System.String,System.String,System.String,System.Int32,System.Int32,System.IntPtr@)">
+            <summary>
+            http://pinvoke.net/default.aspx/advapi32.LogonUser
+            </summary>
+            <param name="lpszUsername"></param>
+            <param name="lpszDomain"></param>
+            <param name="lpszPassword"></param>
+            <param name="dwLogonType"></param>
+            <param name="dwLogonProvider"></param>
+            <param name="phToken"></param>
             <returns></returns>
         </member>
         <member name="M:Ruru.Net.NetworkConnection.Dispose">
@@ -464,7 +481,12 @@
             such as a mail server.
             </summary>
         </member>
-        <!-- 잘못된 형식의 XML 주석은 "F:Ruru.Net.LogonType.LOGON32_LOGON_NETWORK" 멤버에 대해 무시됩니다. -->
+        <member name="F:Ruru.Net.LogonType.LOGON32_LOGON_NETWORK">
+            <summary>
+            This logon type is intended for high performance servers to authenticate plaintext passwords.
+            The LogonUser function does not cache credentials for this logon type.
+            </summary>
+        </member>
         <member name="F:Ruru.Net.LogonType.LOGON32_LOGON_BATCH">
             <summary>
             This logon type is intended for batch servers, where processes may be executing on behalf of a user without 
@@ -512,6 +534,21 @@
             The default security provider is negotiate, unless you pass NULL for the domain name and the user name 
             is not in UPN format. In this case, the default provider is NTLM. 
             NOTE: Windows 2000/NT:   The default security provider is NTLM.
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.LogonProvider.LOGON32_PROVIDER_WINNT35">
+            <summary>
+            Windows NT 3.5
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.LogonProvider.LOGON32_PROVIDER_WINNT40">
+            <summary>
+            Windows NT 4.0
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.LogonProvider.LOGON32_PROVIDER_WINNT50">
+            <summary>
+            Windows NT 5.0
             </summary>
         </member>
     </members>

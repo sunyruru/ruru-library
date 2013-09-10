@@ -22,6 +22,9 @@ namespace Ruru.Net
             }
         }
 
+        /// <summary>
+        /// Get Local IP
+        /// </summary>
         public static IPHostEntry GetLocalIPHost
         {
             get

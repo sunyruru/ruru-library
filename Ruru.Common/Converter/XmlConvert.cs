@@ -5,6 +5,9 @@
     using System.Text;
     using System.Web;
 
+    /// <summary>
+    /// XML Convert Class
+    /// </summary>
     public partial class XmlConvert : ConvertBase
     {
         #region " GetXmlTypeData From DataTable "

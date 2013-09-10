@@ -23,3 +23,12 @@ R:\Dev\Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Common.xml
 R:\Dev\Library\ruru-library\Ruru.Net\obj\Debug\ResolveAssemblyReference.cache
 R:\Dev\Library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.dll
 R:\Dev\Library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.pdb
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.XML
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.dll
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.pdb
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Common.dll
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Common.pdb
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Common.xml
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\obj\Debug\ResolveAssemblyReference.cache
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.dll
+F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.pdb
