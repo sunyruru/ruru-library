@@ -4,6 +4,11 @@
         <name>Ruru.Messaging</name>
     </assembly>
     <members>
+        <member name="T:Ruru.Messaging.MSMQ.DBStoreManager">
+            <summary>
+            Microsoft Message Queue Repacking Class
+            </summary>
+        </member>
         <member name="M:Ruru.Messaging.IStoreManager.AddMsg(System.Object)">
             <summary>
             저장소에 메시지를 추가합니다.
@@ -26,26 +31,6 @@
         <member name="P:Ruru.Messaging.IStoreManager.ConnectionString">
             <summary>
             저장소 연결 문자열
-            </summary>
-        </member>
-        <member name="T:Ruru.Messaging.StoreManagerMode">
-            <summary>
-            MSMQ 사용 모드를 지정합니다.
-            </summary>
-        </member>
-        <member name="F:Ruru.Messaging.StoreManagerMode.Read">
-            <summary>
-            MSMQ 에서 메시지를 읽고 지우는 모드로 연결합니다.
-            </summary>
-        </member>
-        <member name="F:Ruru.Messaging.StoreManagerMode.Write">
-            <summary>
-            MSMQ 에 메시지를 작성 모드로 연결합니다.
-            </summary>
-        </member>
-        <member name="T:Ruru.Messaging.MSMQ.DBStoreManager">
-            <summary>
-            Microsoft Message Queue Repacking Class
             </summary>
         </member>
         <member name="M:Ruru.Messaging.MSMQ.DBStoreManager.#ctor">
@@ -93,6 +78,21 @@
         <member name="P:Ruru.Messaging.MSMQ.DBStoreManager.ConnectionString">
             <summary>
             연결 문자열
+            </summary>
+        </member>
+        <member name="T:Ruru.Messaging.StoreManagerMode">
+            <summary>
+            MSMQ 사용 모드를 지정합니다.
+            </summary>
+        </member>
+        <member name="F:Ruru.Messaging.StoreManagerMode.Read">
+            <summary>
+            MSMQ 에서 메시지를 읽고 지우는 모드로 연결합니다.
+            </summary>
+        </member>
+        <member name="F:Ruru.Messaging.StoreManagerMode.Write">
+            <summary>
+            MSMQ 에 메시지를 작성 모드로 연결합니다.
             </summary>
         </member>
         <member name="T:Ruru.Messaging.MSMQ.MSMQStoreManager">
