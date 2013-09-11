@@ -4,152 +4,382 @@
         <name>Ruru.Common</name>
     </assembly>
     <members>
-        <member name="T:Ruru.Common.DBManager">
+        <member name="T:Ruru.Common.Win32.RegistryKeyBase">
             <summary>
-            Database 관련 Class
+            Provides access to a registry key sub keys and values.
             </summary>
         </member>
-        <member name="M:Ruru.Common.DBManager.#ctor">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.Close">
             <summary>
-            Class Constructor
+            Closes the registry key.
             </summary>
         </member>
-        <member name="M:Ruru.Common.DBManager.#ctor(System.String)">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.DoGetValue(System.String)">
             <summary>
-            DBManager Constructor
+            Gets an actual value from the registry.
             </summary>
-            <param name="strConnection">MS-SQL 연결 문자열</param>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The value from the registry, or <see langword="null"/> if
+            there is no such value.</returns>
         </member>
-        <member name="M:Ruru.Common.DBManager.Connect">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.DoOpenSubKey(System.String)">
             <summary>
-            DataBase Connection 이 null 이고 Connection String 이 있는 경우만 새로운 Connection을 생성합니다.
+            Gets the sub key for the given key name.
             </summary>
+            <param name="name">The name fo the key to get.</param>
+            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
+            </returns>
         </member>
-        <member name="M:Ruru.Common.DBManager.AddItem(System.String,System.Object)">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetBoolValue(System.String)">
             <summary>
-            Insert 혹은 Update 아이템 등록 
+            Gets the boolean value represented by the value for requested name in the registry key.
             </summary>
-            <param name="ColumnName">아이템명</param>
-            <param name="value">아이템값</param>
+            <remarks>
+            An integer value of 1 is considered <langword>true</langword>, any other 
+            value is considered <langword>false</langword>.
+            </remarks>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The boolean value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an integer representing a boolean.</exception>
         </member>
-        <member name="M:Ruru.Common.DBManager.ClearItem">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetEnumValue``1(System.String)">
             <summary>
-            등록 아이템을 초기화
+            Gets the enum value for the given name.
             </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The enum value of type  <typeparamref name="T"/> represented by the value
+            for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an string, or it is a string value but it is not a 
+            valid value name for enum type <typeparamref name="T"/>.</exception>
+            <typeparam name="T">The enum type.</typeparam>
         </member>
-        <member name="M:Ruru.Common.DBManager.RemoveItem(System.String)">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetIntValue(System.String)">
             <summary>
-            Insert 혹은 Update 아이템 삭제
+            Gets the integer value for the given name.
             </summary>
-            <param name="ColumnName">제거할 아이템명</param>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The integer value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an integer.</exception>
         </member>
-        <member name="M:Ruru.Common.DBManager.Insert(System.String)">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetStringValue(System.String)">
             <summary>
-            Insert 전 반드시 AddItem() 호출로 insert할 아이템을 추가 시켜줘야 합니다.
+            Gets the string value for the given name.
             </summary>
-            <param name="TBL">대상 테이블명</param>
-            <returns>영향받은 행의 수</returns>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The string value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not a string.</exception>
         </member>
-        <member name="M:Ruru.Common.DBManager.Update(System.String,System.String,System.String)">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetTypeValue(System.String)">
             <summary>
-            Update 전 반드시 AddItem() 호출로 update할 아이템을 추가 시켜줘야 합니다.
+            Gets the <see cref="T:System.Type"/> value for the given name.
             </summary>
-            <param name="TBL">대상 테이블명</param>
-            <param name="KeyName">업데이트 키 컬럼명</param>
-            <param name="KeyValue">업데이트 키 값</param>
-            <returns>영향받은 행의 수</returns>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The instance of <see cref="T:System.Type"/> represented by the value for
+            the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an string, or it is a string value but it is not a 
+            valid type name.</exception>
         </member>
-        <member name="M:Ruru.Common.DBManager.Delete(System.String,System.String,System.String)">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetValueNames">
             <summary>
-            대상 테이블에서 선택된 컬럼을 삭제 합니다.
+            Gets the names for the values.
             </summary>
-            <param name="TBL">대상 테이블명</param>
-            <param name="KeyName">키 명</param>
-            <param name="KeyValue">키 값</param>
-            <returns>영향 받은 행의 수</returns>
+            <returns>The value names.</returns>
         </member>
-        <member name="M:Ruru.Common.DBManager.Select(System.String)">
+        <member name="M:Ruru.Common.Win32.RegistryKeyBase.OpenSubKey(System.String)">
             <summary>
-            대상 테이블로 부터 SELECT 쿼리를 실행합니다.
+            Gets the sub key for the given key name.
             </summary>
-            <param name="TBL">대상 테이블명</param>
-            <returns>SELECT 결과</returns>
+            <param name="name">The name fo the key to get.</param>
+            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">when <paramref name="name"/>is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">when <paramref name="name"/>is not a valid name.</exception>
         </member>
-        <member name="M:Ruru.Common.DBManager.Select(System.String,System.String)">
+        <member name="P:Ruru.Common.Win32.RegistryKeyBase.IsPolicyKey">
             <summary>
-            대상 테이블로 부터 SELECT 쿼리를 실행합니다.
-            </summary>
-            <param name="TBL">대상 테이블명</param>
-            <param name="Columns">컬럼명 - 컬럼명은 쉼표(,)로 구분한 MS-SQL 구문입니다.</param>
-            <returns>SELECT 결과</returns>
-        </member>
-        <member name="M:Ruru.Common.DBManager.Select(System.String,System.String,System.String)">
-            <summary>
-            대상 테이블로 부터 SELECT 쿼리를 실행합니다.
-            </summary>
-            <param name="TBL">대상 테이블명</param>
-            <param name="Columns">컬럼명 - 컬럼명은 쉼표(,)로 구분한 MS-SQL 구문입니다.</param>
-            <param name="WhereCondition">조건절 - WHERE 키워드 없이 나열한 MS-SQL 구문입니다.</param>
-            <returns>SELECT 결과</returns>
-        </member>
-        <member name="M:Ruru.Common.DBManager.Select(System.String,System.String,System.String,System.String)">
-            <summary>
-            대상 테이블로 부터 SELECT 쿼리를 실행합니다.(단, GROUP BY 조건은 사용할 수 없으며, 이 경우는 ExecuteQuery()함수를 이용해 주십시오.)
-            </summary>
-            <param name="TBL">대상 테이블명</param>
-            <param name="Columns">컬럼명 - 컬럼명은 쉼표(,)로 구분한 MS-SQL 구문입니다.</param>
-            <param name="WhereCondition">조건절 - WHERE 키워드 없이 나열한 MS-SQL 구문입니다.</param>
-            <param name="OrderCondition">정렬조건 - ORDER BY 키워드 없이 나열한 MS-SQL 구문입니다.</param>
-            <returns>SELECT 결과</returns>
-        </member>
-        <member name="M:Ruru.Common.DBManager.ExecuteQuery(System.String)">
-            <summary>
-            지정된 쿼리문을 실행하고 그 결과를 DataSet 으로 반환합니다.
-            </summary>
-            <param name="query">실행할 MS-SQL 쿼리 구문입니다.</param>
-            <returns>쿼리 결과 DataSet</returns>
-        </member>
-        <member name="M:Ruru.Common.DBManager.ExecuteProcedure(System.String)">
-            <summary>
-            지정된 저장프로시저를 실행합니다.
-            </summary>
-            <param name="SPName">저장 프로시저명</param>
-            <returns>실행결과 DataSet</returns>
-        </member>
-        <member name="M:Ruru.Common.DBManager.ExecuteProcedure(System.String,System.Data.SqlClient.SqlParameter[])">
-            <summary>
-            지정된 저장프로시저를 실행합니다.
-            </summary>
-            <param name="SPName">저장 프로시저명</param>
-            <param name="objSQLParams">SQL Parameters</param>
-            <returns>실행결과 DataSet</returns>
-        </member>
-        <member name="M:Ruru.Common.DBManager.GetDifferentRecords(System.Data.DataTable,System.Data.DataTable)">
-            <summary>   
-            두개의 DataTable을 비교해서 다른행을 DataTable형태로 리턴한다.   
-            </summary>   
-            <param name="FirstDataTable">FirstDataTable</param>   
-            <param name="SecondDataTable">SecondDataTable</param>   
-            <returns>DifferentRecords</returns>   
-        </member>
-        <member name="M:Ruru.Common.DBManager.Dispose">
-            <summary>
-            Dispose Resource
+            Gets the indication of whether the registry key represents a policy.
             </summary>
         </member>
-        <member name="P:Ruru.Common.DBManager.ConnectionString">
+        <member name="P:Ruru.Common.Win32.RegistryKeyBase.Name">
             <summary>
-            MS-SQL 연결문자열 입니다.
+            Gets the full name of the registry key.
             </summary>
         </member>
-        <member name="P:Ruru.Common.DBManager.CurrentError">
+        <member name="T:Ruru.Common.Win32.IRegistryKey">
             <summary>
-            DBManager 에서 발생한 가장 마지막 Exception을 반환합니다.
+            Provides access to a registry key sub keys and values.
+            </summary>
+            <remarks>
+            This interface allows for unit testing without requiring access to the machine's registry.
+            </remarks>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.Close">
+            <summary>
+            Closes the registry key.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetBoolValue(System.String)">
+            <summary>
+            Gets the boolean value represented by the value for requested name in the registry key.
+            </summary>
+            <remarks>
+            An integer value of 1 is considered <langword>true</langword>, any other 
+            value is considered <langword>false</langword>.
+            </remarks>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The boolean value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an integer representing a boolean.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetEnumValue``1(System.String)">
+            <summary>
+            Gets the enum value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The enum value of type  <typeparamref name="T"/> represented by the value
+            for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an string, or it is a string value but it is not a 
+            valid value name for enum type <typeparamref name="T"/>.</exception>
+            <typeparam name="T">The enum type.</typeparam>
+            <devdoc>
+            FxCop message CA1004 is supressed because the T parameter is used to drive the
+            type of the method return value, so it is not possible to provide a method
+            parameter that enables generic parameter inference.
+            </devdoc>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetIntValue(System.String)">
+            <summary>
+            Gets the integer value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The integer value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an integer.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetStringValue(System.String)">
+            <summary>
+            Gets the string value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The string value for the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not a string.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetTypeValue(System.String)">
+            <summary>
+            Gets the <see cref="T:System.Type"/> value for the given name.
+            </summary>
+            <param name="valueName">The name of the value to get.</param>
+            <returns>The instance of <see cref="T:System.Type"/> represented by the value for
+            the requested name in the registry key.</returns>
+            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
+            or the value exists but it is not an string, or it is a string value but it is not a 
+            valid type name.</exception>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.GetValueNames">
+            <summary>
+            Gets the names for the values.
+            </summary>
+            <returns>The value names.</returns>
+        </member>
+        <member name="M:Ruru.Common.Win32.IRegistryKey.OpenSubKey(System.String)">
+            <summary>
+            Gets the sub key for the given key name.
+            </summary>
+            <param name="name">The name fo the key to get.</param>
+            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryKey.IsPolicyKey">
+            <summary>
+            Gets the indication of whether the registry key represents a policy.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryKey.Name">
+            <summary>
+            Gets the full name of the registry key.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Converter.XmlConvert">
+            <summary>
+            XML Convert Class
             </summary>
         </member>
         <member name="T:Ruru.Common.Converter.ConvertBase">
             <summary>
             Convert Base Class
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Converter.Base64Convert">
+            <summary>
+            Base64 String Convert Class
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Converter.Base64Convert.Base64Encode(System.String,System.Text.Encoding)">
+            <summary>
+            Base64 Encoding
+            </summary>
+            <param name="src"></param>
+            <param name="enc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Converter.Base64Convert.Base64Decode(System.String)">
+            <summary>
+            Base64 Decode
+            </summary>
+            <param name="src"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ruru.Common.Control.ExtendControl">
+            <summary>
+            Control의 Invoke에 대한 확장 메소드 제공
+            </summary>
+            <example>
+            int count = f.InvokeSync&lt;int&gt;(() => f.Controls.Count);
+            </example>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``1(System.Windows.Forms.Control,System.Func{``0})">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``2(System.Windows.Forms.Control,System.Func{``0,``1},``0)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``3(System.Windows.Forms.Control,System.Func{``0,``1,``2},``0,``1)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``4(System.Windows.Forms.Control,System.Func{``0,``1,``2,``3},``0,``1,``2)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <param name="argument3"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``5(System.Windows.Forms.Control,System.Func{``0,``1,``2,``3,``4},``0,``1,``2,``3)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <typeparam name="T4"></typeparam>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <param name="argument3"></param>
+            <param name="argument4"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync(System.Windows.Forms.Control,System.Action)">
+            <summary>
+            Invoke
+            </summary>
+            <param name="c"></param>
+            <param name="func"></param>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``1(System.Windows.Forms.Control,System.Action{``0},``0)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument"></param>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``2(System.Windows.Forms.Control,System.Action{``0,``1},``0,``1)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``3(System.Windows.Forms.Control,System.Action{``0,``1,``2},``0,``1,``2)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <param name="argument3"></param>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``4(System.Windows.Forms.Control,System.Action{``0,``1,``2,``3},``0,``1,``2,``3)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <typeparam name="T4"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <param name="argument3"></param>
+            <param name="argument4"></param>
+        </member>
+        <member name="T:Ruru.Common.Win32.IRegistryAccessor">
+            <summary>
+            Provides access to the registry.
+            </summary>
+            <remarks>
+            This interface allows for unit testing without requiring access to the machine's registry.
+            </remarks>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryAccessor.CurrentUser">
+            <summary>
+            Gets registry key HKCU.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryAccessor.LocalMachine">
+            <summary>
+            Gets registry key HKLM.
             </summary>
         </member>
         <member name="T:Ruru.Common.Converter.FileSize">
@@ -275,367 +505,6 @@
             <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
             <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
         </member>
-        <member name="T:Ruru.Common.Win32.IRegistryKey">
-            <summary>
-            Provides access to a registry key sub keys and values.
-            </summary>
-            <remarks>
-            This interface allows for unit testing without requiring access to the machine's registry.
-            </remarks>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.Close">
-            <summary>
-            Closes the registry key.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetBoolValue(System.String)">
-            <summary>
-            Gets the boolean value represented by the value for requested name in the registry key.
-            </summary>
-            <remarks>
-            An integer value of 1 is considered <langword>true</langword>, any other 
-            value is considered <langword>false</langword>.
-            </remarks>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The boolean value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an integer representing a boolean.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetEnumValue``1(System.String)">
-            <summary>
-            Gets the enum value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The enum value of type  <typeparamref name="T"/> represented by the value
-            for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an string, or it is a string value but it is not a 
-            valid value name for enum type <typeparamref name="T"/>.</exception>
-            <typeparam name="T">The enum type.</typeparam>
-            <devdoc>
-            FxCop message CA1004 is supressed because the T parameter is used to drive the
-            type of the method return value, so it is not possible to provide a method
-            parameter that enables generic parameter inference.
-            </devdoc>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetIntValue(System.String)">
-            <summary>
-            Gets the integer value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The integer value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an integer.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetStringValue(System.String)">
-            <summary>
-            Gets the string value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The string value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not a string.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetTypeValue(System.String)">
-            <summary>
-            Gets the <see cref="T:System.Type"/> value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The instance of <see cref="T:System.Type"/> represented by the value for
-            the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an string, or it is a string value but it is not a 
-            valid type name.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.GetValueNames">
-            <summary>
-            Gets the names for the values.
-            </summary>
-            <returns>The value names.</returns>
-        </member>
-        <member name="M:Ruru.Common.Win32.IRegistryKey.OpenSubKey(System.String)">
-            <summary>
-            Gets the sub key for the given key name.
-            </summary>
-            <param name="name">The name fo the key to get.</param>
-            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
-            </returns>
-        </member>
-        <member name="P:Ruru.Common.Win32.IRegistryKey.IsPolicyKey">
-            <summary>
-            Gets the indication of whether the registry key represents a policy.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Win32.IRegistryKey.Name">
-            <summary>
-            Gets the full name of the registry key.
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.Win32.RegistryKeyBase">
-            <summary>
-            Provides access to a registry key sub keys and values.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.Close">
-            <summary>
-            Closes the registry key.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.DoGetValue(System.String)">
-            <summary>
-            Gets an actual value from the registry.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The value from the registry, or <see langword="null"/> if
-            there is no such value.</returns>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.DoOpenSubKey(System.String)">
-            <summary>
-            Gets the sub key for the given key name.
-            </summary>
-            <param name="name">The name fo the key to get.</param>
-            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
-            </returns>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetBoolValue(System.String)">
-            <summary>
-            Gets the boolean value represented by the value for requested name in the registry key.
-            </summary>
-            <remarks>
-            An integer value of 1 is considered <langword>true</langword>, any other 
-            value is considered <langword>false</langword>.
-            </remarks>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The boolean value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an integer representing a boolean.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetEnumValue``1(System.String)">
-            <summary>
-            Gets the enum value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The enum value of type  <typeparamref name="T"/> represented by the value
-            for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an string, or it is a string value but it is not a 
-            valid value name for enum type <typeparamref name="T"/>.</exception>
-            <typeparam name="T">The enum type.</typeparam>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetIntValue(System.String)">
-            <summary>
-            Gets the integer value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The integer value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an integer.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetStringValue(System.String)">
-            <summary>
-            Gets the string value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The string value for the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not a string.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetTypeValue(System.String)">
-            <summary>
-            Gets the <see cref="T:System.Type"/> value for the given name.
-            </summary>
-            <param name="valueName">The name of the value to get.</param>
-            <returns>The instance of <see cref="T:System.Type"/> represented by the value for
-            the requested name in the registry key.</returns>
-            <exception cref="T:Ruru.Common.Win32.RegistryAccessException">when there is no value for the given name,
-            or the value exists but it is not an string, or it is a string value but it is not a 
-            valid type name.</exception>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.GetValueNames">
-            <summary>
-            Gets the names for the values.
-            </summary>
-            <returns>The value names.</returns>
-        </member>
-        <member name="M:Ruru.Common.Win32.RegistryKeyBase.OpenSubKey(System.String)">
-            <summary>
-            Gets the sub key for the given key name.
-            </summary>
-            <param name="name">The name fo the key to get.</param>
-            <returns>The sub key with the requested name if it exists; otherwise <see langword="null"/>.
-            </returns>
-            <exception cref="T:System.ArgumentNullException">when <paramref name="name"/>is <see langword="null"/>.</exception>
-            <exception cref="T:System.ArgumentException">when <paramref name="name"/>is not a valid name.</exception>
-        </member>
-        <member name="P:Ruru.Common.Win32.RegistryKeyBase.IsPolicyKey">
-            <summary>
-            Gets the indication of whether the registry key represents a policy.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Win32.RegistryKeyBase.Name">
-            <summary>
-            Gets the full name of the registry key.
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.ServiceManager">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.ServiceManager.ServiceStatus(System.String,System.String)">
-            <summary>
-            지정된 서버의 서비스 명을 찾아 있을 경우 서비스 상태를 반환
-            </summary>
-            <param name="sServiceName">서비스 이름</param>
-            <param name="sServiceServer">지정된 서버</param>
-            <returns><see cref="T:System.ServiceProcess.ServiceControllerStatus"/>서비스 상태 (Nillable)</returns>
-        </member>
-        <member name="M:Ruru.Common.ServiceManager.ServiceList(System.String)">
-            <summary>
-            지정된 서버의 서비스 목록을 반환
-            </summary>
-            <param name="sServiceServer">지정된 서버</param>
-            <exception cref="T:System.ComponentModel.Win32Exception">An error occurred when accessing a system API.</exception>
-            <returns><see cref="T:System.Collections.Generic.List`1"/> 서비스 목록</returns>
-        </member>
-        <member name="T:Ruru.Common.ServiceManager.ServiceStatusClass">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Ruru.Common.ServiceManager.ServiceStatusClass.Status">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Ruru.Common.ServiceManager.ServiceStatusClass.Service">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.ProcessLaunch">
-            <summary>
-            보이지 않게 Background로 Process 실행을 위한 클래스
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.ProcessLaunch.#ctor">
-            <summary>
-            기본 생성자
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.ProcessLaunch.RunProcess">
-            <summary>
-            프로세스 실행
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.Args">
-            <summary>
-            명령 실행 인자값을 설정합니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.ErrorMessage">
-            <summary>
-            오류 메시지를 확인합니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.Filename">
-            <summary>
-            실행할 파일명을 지정합니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.ProcessOutput">
-            <summary>
-            프로그램 실행 후 반환되는 결과값을 가집니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.ProgramFilesDir">
-            <summary>
-            ProgramFiles 디렉토리가 지정됩니다.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.UseShellExecute">
-            <summary>
-            실행 시 Console Shell 창을 사용할지 여부 지정
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.WindowStyle">
-            <summary>
-            프로세스 창 스타일을 지정
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.ProcessLaunch.WorkingDir">
-            <summary>
-            프로세스의 작업 디렉토리 지정
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.ResourceManagerHelper">
-            <summary>
-            Encapsulates a ResourceManager object used to acquire localized
-            strings specific to this tool.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.ResourceManagerHelper.CreateResourceManager(System.String)">
-            <summary>
-            지정된 타입의 ResourceManager 생성
-            </summary>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <param name="type"></param>
-        </member>
-        <member name="M:Ruru.Common.ResourceManagerHelper.GetString(System.String)">
-            <summary>
-            ResourceManager에서 문자열을 가져옴
-            </summary>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.InvalidOperationException"></exception>
-            <exception cref="T:System.Resources.MissingManifestResourceException"></exception>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Ruru.Common.Win32.IRegistryAccessor">
-            <summary>
-            Provides access to the registry.
-            </summary>
-            <remarks>
-            This interface allows for unit testing without requiring access to the machine's registry.
-            </remarks>
-        </member>
-        <member name="P:Ruru.Common.Win32.IRegistryAccessor.CurrentUser">
-            <summary>
-            Gets registry key HKCU.
-            </summary>
-        </member>
-        <member name="P:Ruru.Common.Win32.IRegistryAccessor.LocalMachine">
-            <summary>
-            Gets registry key HKLM.
-            </summary>
-        </member>
-        <member name="T:Ruru.Common.INIParser">
-            <summary>
-            INI 설정파일을 사용할 수 있도록 합니다.
-            </summary>
-        </member>
-        <member name="M:Ruru.Common.INIParser.#ctor(System.String)">
-            <summary>
-            INI 파일의 경로를 지정합니다.
-            </summary>
-            <param name="INIPath">INI 파일 경로</param>
-        </member>
-        <member name="M:Ruru.Common.INIParser.WriteValue(System.String,System.String,System.String)">
-            <summary>
-            INI 파일에 값을 입력
-            </summary>
-            <param name="Section">섹션</param>
-            <param name="Key">키</param>
-            <param name="Value">값</param>
-        </member>
-        <member name="M:Ruru.Common.INIParser.ReadValue(System.String,System.String)">
-            <summary>
-            INI 파일의 정보를 읽음
-            </summary>
-            <param name="Section">섹션</param>
-            <param name="Key">키</param>
-            <returns>값</returns>
-        </member>
         <member name="T:Ruru.Common.Resources">
             <summary>
               지역화된 문자열 등을 찾기 위한 강력한 형식의 리소스 클래스입니다.
@@ -677,43 +546,591 @@
               {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
             </summary>
         </member>
-        <member name="T:Ruru.Common.LogWriter">
+        <member name="T:Ruru.Common.Web.HttpCacheUtil">
+            <summary>
+            브라우저 쿠키를 제어하는 클래스
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCacheUtil.Get(System.String)">
+            <summary>
+            서버 캐시로부터 값을 읽음. object 타입으로 반환. 값이 없으면 null 반환.
+            </summary>
+            <param name="key">캐시 키</param>
+            <returns>object 타입으로 반환. 값이 없으면 null 반환.</returns>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCacheUtil.Get(System.String,System.Type)">
+            <summary>
+            서버 캐시로부터 값을 읽음. 값이 없으면 null 반환. 타입 변환 실패 시 null 반환.
+            </summary>
+            <param name="key">캐시 키</param>
+            <param name="type">변환할 Type</param>
+            <returns>값이 없으면 null 반환. 타입 변환 실패 시 null 반환.</returns>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCacheUtil.Add(System.String,System.Object)">
+            <summary>
+            캐시에 값 저장
+            </summary>
+            <param name="key">키. 키가 존재할 경우, 삭제하고 새로 생성.</param>
+            <param name="value">저장할 값. null이라도 저장됨.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCacheUtil.Add(System.String,System.Object,System.Int32)">
+            <summary>
+            캐시에 값 저장
+            </summary>
+            <param name="key">키. 키가 존재할 경우, 삭제하고 새로 생성.</param>
+            <param name="value">저장할 값. null이라도 저장됨.</param>
+            <param name="expirationMinutes">만료 시간 (분). 현재 시각부터의 경과 시간. 0일 경우, 기본 30분.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCacheUtil.Add(System.String,System.Object,System.Int32,System.Boolean)">
+            <summary>
+            캐시에 값 저장
+            </summary>
+            <param name="key">키. 키가 존재할 경우, 삭제하고 새로 생성.</param>
+            <param name="value">저장할 값. null이라도 저장됨.</param>
+            <param name="expirationMinutes">만료 시간 (분). 현재 시각부터의 경과 시간. 0일 경우, 기본 30분.</param>
+            <param name="sliding">상대 만료 여부. 기본값 false.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCacheUtil.Remove(System.String)">
+            <summary>
+            캐시에서 값 삭제
+            </summary>
+            <param name="key">캐시 키</param>
+        </member>
+        <member name="T:Ruru.Common.Web.HttpCookieUtil">
+            <summary>
+            브라우저 쿠키 제어
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.Web.HttpCookieUtil.BrowserCookie">
+            <summary>
+            브라우저 쿠키 Expire
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Save(System.String,System.String)">
+            <summary>
+            브라우저 쿠키 저장
+            </summary>
+            <param name="cookieName">쿠키 이름</param>
+            <param name="value">쿠키 값. Base64 인코딩하여 저장된다.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Save(System.String,System.String,System.Int32)">
+            <summary>
+            쿠키 저장
+            </summary>
+            <param name="cookieName">쿠키 이름</param>
+            <param name="value">쿠키 값. Base64 인코딩하여 저장된다.</param>
+            <param name="expirationMinutes">만료 시간(분). 현재 시각으로부터 경과 시간. 0이면 브라우저 쿠키로 저장. 기본값 0.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Save(System.String,System.String,System.DateTime)">
+            <summary>
+            쿠키 저장
+            </summary>
+            <param name="cookieName">쿠키 이름</param>
+            <param name="value">쿠키 값. Base64 인코딩하여 저장된다.</param>
+            <param name="expires">만료 일시. CookieUtil.BrowserCookie 값을 넘기면 브라우저 쿠키로 저장. 기본값 CookieUtil.BrowserCookie.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Save(System.Web.HttpResponse,System.String,System.String)">
+            <summary>
+            브라우저 쿠키 저장
+            </summary>
+            <param name="response">HttpResponse 개체. null이면 HttpContext.Current.Response 사용.</param>
+            <param name="cookieName">쿠키 이름</param>
+            <param name="value">쿠키 값. Base64 인코딩하여 저장된다.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Save(System.Web.HttpResponse,System.String,System.String,System.Int32)">
+            <summary>
+            쿠키 저장
+            </summary>
+            <param name="response">HttpResponse 개체. null이면 HttpContext.Current.Response 사용.</param>
+            <param name="cookieName">쿠키 이름</param>
+            <param name="value">쿠키 값. Base64 인코딩하여 저장된다.</param>
+            <param name="expirationMinutes">만료 시간(분). 현재 시각으로부터 경과 시간. 0이면 브라우저 쿠키로 저장. 기본값 0.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Save(System.Web.HttpResponse,System.String,System.String,System.DateTime)">
+            <summary>
+            쿠키 저장
+            </summary>
+            <param name="response">HttpResponse 개체. null이면 HttpContext.Current.Response 사용.</param>
+            <param name="cookieName">쿠키 이름</param>
+            <param name="value">쿠키 값. Base64 인코딩하여 저장된다.</param>
+            <param name="expires">만료 일시. CookieUtil.BrowserCookie 값을 넘기면 브라우저 쿠키로 저장. 기본값 CookieUtil.BrowserCookie.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Read(System.String)">
+            <summary>
+            쿠키에서 값 읽음
+            </summary>
+            <param name="cookieName">쿠키 이름</param>
+            <returns>쿠키 값. 없으면 null</returns>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Read(System.Web.HttpRequest,System.String)">
+            <summary>
+            쿠키에서 값 읽음
+            </summary>
+            <param name="request">HttpRequest 개체. null이면 HttpContext.Current.Request 사용.</param>
+            <param name="cookieName">쿠키 이름</param>
+            <returns>쿠키 값. 없으면 null</returns>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Delete(System.String)">
+            <summary>
+            응답 쿠키 제거
+            </summary>
+            <param name="cookieName">쿠키 이름</param>
+        </member>
+        <member name="M:Ruru.Common.Web.HttpCookieUtil.Delete(System.Web.HttpResponse,System.String)">
+            <summary>
+            응답 쿠키 제거
+            </summary>
+            <param name="response">HttpResponse 개체. null이면 HttpContext.Current.Response 사용.</param>
+            <param name="cookieName">쿠키 이름</param>
+        </member>
+        <member name="T:Ruru.Common.DB.DBManager">
+            <summary>
+            Database 관련 Class
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.#ctor">
+            <summary>
+            Class Constructor
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.#ctor(System.String)">
+            <summary>
+            DBManager Constructor
+            </summary>
+            <param name="strConnection">MS-SQL 연결 문자열</param>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Connect">
+            <summary>
+            DataBase Connection 이 null 이고 Connection String 이 있는 경우만 새로운 Connection을 생성합니다.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.AddItem(System.String,System.Object)">
+            <summary>
+            Insert 혹은 Update 아이템 등록 
+            </summary>
+            <param name="ColumnName">아이템명</param>
+            <param name="value">아이템값</param>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.ClearItem">
+            <summary>
+            등록 아이템을 초기화
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.RemoveItem(System.String)">
+            <summary>
+            Insert 혹은 Update 아이템 삭제
+            </summary>
+            <param name="ColumnName">제거할 아이템명</param>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Insert(System.String)">
+            <summary>
+            Insert 전 반드시 AddItem() 호출로 insert할 아이템을 추가 시켜줘야 합니다.
+            </summary>
+            <param name="TBL">대상 테이블명</param>
+            <returns>영향받은 행의 수</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Update(System.String,System.String,System.String)">
+            <summary>
+            Update 전 반드시 AddItem() 호출로 update할 아이템을 추가 시켜줘야 합니다.
+            </summary>
+            <param name="TBL">대상 테이블명</param>
+            <param name="KeyName">업데이트 키 컬럼명</param>
+            <param name="KeyValue">업데이트 키 값</param>
+            <returns>영향받은 행의 수</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Delete(System.String,System.String,System.String)">
+            <summary>
+            대상 테이블에서 선택된 컬럼을 삭제 합니다.
+            </summary>
+            <param name="TBL">대상 테이블명</param>
+            <param name="KeyName">키 명</param>
+            <param name="KeyValue">키 값</param>
+            <returns>영향 받은 행의 수</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Select(System.String)">
+            <summary>
+            대상 테이블로 부터 SELECT 쿼리를 실행합니다.
+            </summary>
+            <param name="TBL">대상 테이블명</param>
+            <returns>SELECT 결과</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Select(System.String,System.String)">
+            <summary>
+            대상 테이블로 부터 SELECT 쿼리를 실행합니다.
+            </summary>
+            <param name="TBL">대상 테이블명</param>
+            <param name="Columns">컬럼명 - 컬럼명은 쉼표(,)로 구분한 MS-SQL 구문입니다.</param>
+            <returns>SELECT 결과</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Select(System.String,System.String,System.String)">
+            <summary>
+            대상 테이블로 부터 SELECT 쿼리를 실행합니다.
+            </summary>
+            <param name="TBL">대상 테이블명</param>
+            <param name="Columns">컬럼명 - 컬럼명은 쉼표(,)로 구분한 MS-SQL 구문입니다.</param>
+            <param name="WhereCondition">조건절 - WHERE 키워드 없이 나열한 MS-SQL 구문입니다.</param>
+            <returns>SELECT 결과</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Select(System.String,System.String,System.String,System.String)">
+            <summary>
+            대상 테이블로 부터 SELECT 쿼리를 실행합니다.(단, GROUP BY 조건은 사용할 수 없으며, 이 경우는 ExecuteQuery()함수를 이용해 주십시오.)
+            </summary>
+            <param name="TBL">대상 테이블명</param>
+            <param name="Columns">컬럼명 - 컬럼명은 쉼표(,)로 구분한 MS-SQL 구문입니다.</param>
+            <param name="WhereCondition">조건절 - WHERE 키워드 없이 나열한 MS-SQL 구문입니다.</param>
+            <param name="OrderCondition">정렬조건 - ORDER BY 키워드 없이 나열한 MS-SQL 구문입니다.</param>
+            <returns>SELECT 결과</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.ExecuteQuery(System.String)">
+            <summary>
+            지정된 쿼리문을 실행하고 그 결과를 DataSet 으로 반환합니다.
+            </summary>
+            <param name="query">실행할 MS-SQL 쿼리 구문입니다.</param>
+            <returns>쿼리 결과 DataSet</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.ExecuteProcedure(System.String)">
+            <summary>
+            지정된 저장프로시저를 실행합니다.
+            </summary>
+            <param name="SPName">저장 프로시저명</param>
+            <returns>실행결과 DataSet</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.ExecuteProcedure(System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            지정된 저장프로시저를 실행합니다.
+            </summary>
+            <param name="SPName">저장 프로시저명</param>
+            <param name="objSQLParams">SQL Parameters</param>
+            <returns>실행결과 DataSet</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.GetDifferentRecords(System.Data.DataTable,System.Data.DataTable)">
+            <summary>   
+            두개의 DataTable을 비교해서 다른행을 DataTable형태로 리턴한다.   
+            </summary>   
+            <param name="FirstDataTable">FirstDataTable</param>   
+            <param name="SecondDataTable">SecondDataTable</param>   
+            <returns>DifferentRecords</returns>   
+        </member>
+        <member name="M:Ruru.Common.DB.DBManager.Dispose">
+            <summary>
+            Dispose Resource
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.DB.DBManager.ConnectionString">
+            <summary>
+            MS-SQL 연결문자열 입니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.DB.DBManager.CurrentError">
+            <summary>
+            DBManager 에서 발생한 가장 마지막 Exception을 반환합니다.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.#ctor">
+            <summary>
+            'VPD' ConnectionString으로 연결을 생성한다.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.#ctor(System.String)">
+            <summary>
+            인수로 받은 ConnectionString으로 연결을 생성한다.
+            </summary>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.Dispose">
+            <summary>
+            Connection을 해제한다.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteDataSet(System.Data.CommandType,System.String)">
+            <summary>
+            SELECT 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <returns>데이터셋</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            SELECT 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <param name="parameters">SqlParameter 배열</param>
+            <returns>데이터셋</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteDataSet(System.Data.CommandType,System.String,System.Int32,System.Int32,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            SELECT 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <param name="pageIndex">페이지 인덱스 (0 base)</param>
+            <param name="pageSize">페이지 당 Row 개수</param>
+            <param name="parameters">SqlParameter 배열</param>
+            <returns>데이터셋</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteQuery(System.Data.CommandType,System.String)">
+            <summary>
+            SELECT 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <returns>데이터 테이블</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            SELECT 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <param name="parameters">SqlParameter 배열</param>
+            <returns>데이터 테이블</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteQuery(System.Data.CommandType,System.String,System.Int32,System.Int32,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            SELECT 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <param name="pageIndex">페이지 인덱스 (0 base)</param>
+            <param name="pageSize">페이지 당 Row 개수</param>
+            <param name="parameters">SqlParameter 배열</param>
+            <returns>데이터셋</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteNonQuery(System.Data.CommandType,System.String)">
+            <summary>
+            INSERT/UPDATE/DELETE 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <returns>영향 받은 Row 개수</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            INSERT/UPDATE/DELETE 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <param name="parameters">SqlParameter 배열</param>
+            <returns>영향 받은 Row 개수</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteNonQuery(System.Data.CommandType,System.String,System.Int32,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            INSERT/UPDATE/DELETE 수행.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <param name="timeOut">타임아웃</param>
+            <param name="parameters">SqlParameter 배열</param>
+            <returns>영향 받은 Row 개수</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteScalar(System.Data.CommandType,System.String)">
+            <summary>
+            쿼리를 실행하고 쿼리에서 반환된 결과 집합의 첫 번째 행의 첫 번째 열을 반환합니다. 추가 열이나 행은 무시됩니다.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <returns>결과 집합의 첫 번째 행의 첫 번째 열</returns>
+        </member>
+        <member name="M:Ruru.Common.DB.BaseDAC.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            쿼리를 실행하고 쿼리에서 반환된 결과 집합의 첫 번째 행의 첫 번째 열을 반환합니다. 추가 열이나 행은 무시됩니다.
+            </summary>
+            <param name="commandType">CommandType</param>
+            <param name="commandText">SQL 혹은 프로시저명</param>
+            <param name="parameters">SqlParameter 배열</param>
+            <returns>결과 집합의 첫 번째 행의 첫 번째 열</returns>
+        </member>
+        <member name="P:Ruru.Common.DB.BaseDAC.Connection">
+            <summary>
+            현재 연결된 SqlConnection을 반환
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.DB.BaseDAC.ConnectionString">
+            <summary>
+            현재 연결된 Connection String을 반환
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WriteInformation(Ruru.Common.Exceptions.LogSourceType,System.String,System.String)">
+            <summary>
+            메시지 로깅.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="message">메시지</param>
+            <param name="message">상세 정보. 없을 경우, null.</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WriteInformation(Ruru.Common.Exceptions.LogSourceType,Ruru.Common.Exceptions.LogData)">
+            <summary>
+            메시지 로깅.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="data">LogData 개체. null이 아닐 경우, 포함된 DataStack 정보를 기록함.</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WriteWarning(Ruru.Common.Exceptions.LogSourceType,System.String,System.String)">
+            <summary>
+            경고 메시지 로깅.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="message">메시지</param>
+            <param name="description">상세 정보. 없을 경우, null.</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WriteWarning(Ruru.Common.Exceptions.LogSourceType,Ruru.Common.Exceptions.LogData)">
+            <summary>
+            경고 메시지 로깅.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="data">LogData 개체. null이 아닐 경우, 포함된 DataStack 정보를 기록함.</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.AddExceptionData(System.Exception@,System.String,System.Object)">
+            <summary>
+            Exception.Data에 데이터 추가. 예외 처리됨.
+            이미 키가 있을 경우, 덮어써짐.
+            </summary>
+            <param name="ex">Exception 개체</param>
+            <param name="key">키</param>
+            <param name="value">값</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.AddExceptionData(System.Exception@,Ruru.Common.Exceptions.LogData)">
+            <summary>
+            Exception.Data에 LogData에 포함된 Values 데이터 추가. 예외 처리됨.
+            이미 키가 있을 경우, 덮어써짐.
+            </summary>
+            <param name="ex">Exception 개체</param>
+            <param name="data">Value가 포함된 LogData 개체</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WriteError(Ruru.Common.Exceptions.LogSourceType,System.Exception)">
+            <summary>
+            오류 로깅.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="ex">Exception 개체</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WritePerformance(Ruru.Common.Exceptions.LogSourceType,Ruru.Common.Exceptions.LogData)">
+            <summary>
+            성능 로깅.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="data">LogData 개체. null일 경우, 로그 남지 않음.</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WriteDebug(Ruru.Common.Exceptions.LogSourceType,System.String,System.String)">
+            <summary>
+            디버그 로깅.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="message">메시지</param>
+            <param name="description">상세 정보. 없을 경우, null.</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WriteDebug(Ruru.Common.Exceptions.LogSourceType,Ruru.Common.Exceptions.LogData)">
+            <summary>
+            디버그 로깅.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="data">LogData 개체. null이 아닐 경우, 포함된 DataStack 정보를 기록함.</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogManager.WriteLog(Ruru.Common.Exceptions.LogSourceType,Ruru.Common.Exceptions.LogType,System.String,System.String)">
+            <summary>
+            로깅. 타입 설정 가능.
+            </summary>
+            <param name="sourceType">Source 타입</param>
+            <param name="logType">로그 타입.</param>
+            <param name="message">메시지.</param>
+            <param name="description">상세 정보.</param>
+        </member>
+        <member name="T:Ruru.Common.Exceptions.LogData">
+            <summary>
+            로그 데이터 구조
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogData.AddValue(System.String,System.Object)">
+            <summary>
+            값 추가.
+            </summary>
+            <param name="valueName">값 이름</param>
+            <param name="value">값</param>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogData.StartTimer">
+            <summary>
+            타이머 시작.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.LogData.StopTimer">
+            <summary>
+            타이머 종료.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Exceptions.LogData.IsTimerStopped">
+            <summary>
+            [Read-Only] 타이머 동작 여부
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Exceptions.LogData.Description">
+            <summary>
+            설명.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Exceptions.LogData.ValueStack">
+            <summary>
+            [Read-Only] 값 목록 문자열.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Exceptions.LogData.Values">
+            <summary>
+            [Read-Only] 값 목록.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Exceptions.LogData.StartTime">
+            <summary>
+            [Read-Only] 타이머 시작 시각.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Exceptions.LogData.EndTime">
+            <summary>
+            [Read-Only] 타이머 종료 시각. Stop 상태가 아니면 현재 시각이 반환된다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Exceptions.LogData.ElapsedMilliseconds">
+            <summary>
+            [Read-Only] 타이머 소요 시간. 밀리초 단위. Stop 상태가 아니면 현재 시각까지의 소요 시간이 반환된다.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Exceptions.LogWriter">
             <summary>
             Log 파일 생성 클래스
             </summary>
         </member>
-        <member name="M:Ruru.Common.LogWriter.#ctor">
+        <member name="M:Ruru.Common.Exceptions.LogWriter.#ctor">
             <summary>
             기본 생성자
             </summary>
         </member>
-        <member name="M:Ruru.Common.LogWriter.#ctor(System.String)">
+        <member name="M:Ruru.Common.Exceptions.LogWriter.#ctor(System.String)">
             <summary>
             로그 파일 경로 지정 생성자
             </summary>
             <param name="sLogPath">로그 파일 경로</param>
         </member>
-        <member name="M:Ruru.Common.LogWriter.#ctor(System.String,System.String)">
+        <member name="M:Ruru.Common.Exceptions.LogWriter.#ctor(System.String,System.String)">
             <summary>
             로그 파일 경로, 프로젝트 폴더명 지정 생성자
             </summary>
             <param name="sLogPath">로그 파일 경로</param>
             <param name="sProjectName">프로젝트 폴더명</param>
         </member>
-        <member name="M:Ruru.Common.LogWriter.WriteLog(System.String)">
+        <member name="M:Ruru.Common.Exceptions.LogWriter.WriteLog(System.String)">
             <summary>
             로그파일에 메시지 작성
             </summary>
             <param name="sMessage">메시지</param>
         </member>
-        <member name="M:Ruru.Common.LogWriter.GetFileName(System.String)">
+        <member name="M:Ruru.Common.Exceptions.LogWriter.GetFileName(System.String)">
             <summary>
             파일 경로의 파일을 읽음
             </summary>
             <param name="strPath">파일 경로</param>
             <returns>파일 내용</returns>
         </member>
-        <member name="M:Ruru.Common.LogWriter.GetFileName(System.String,System.Int32)">
+        <member name="M:Ruru.Common.Exceptions.LogWriter.GetFileName(System.String,System.Int32)">
             <summary>
             파일 경로의 파일을 지정 위치부터 읽음
             </summary>
@@ -721,173 +1138,386 @@
             <param name="idx">파일 커서 위치</param>
             <returns>파일 내용</returns>
         </member>
-        <member name="M:Ruru.Common.LogWriter.Dispose">
+        <member name="M:Ruru.Common.Exceptions.LogWriter.Dispose">
             <summary>
             사용 Unmanaged 자원의 해제
             </summary>
         </member>
-        <member name="T:Ruru.Common.LogWriter.LogType">
+        <member name="T:Ruru.Common.Exceptions.LogWriter.LogType">
             <summary>
             로그 타입
             </summary>
         </member>
-        <member name="F:Ruru.Common.LogWriter.LogType.USER">
+        <member name="F:Ruru.Common.Exceptions.LogWriter.LogType.USER">
             <summary>
             사용자
             </summary>
         </member>
-        <member name="F:Ruru.Common.LogWriter.LogType.DEPT">
+        <member name="F:Ruru.Common.Exceptions.LogWriter.LogType.DEPT">
             <summary>
             부서
             </summary>
         </member>
-        <member name="T:Ruru.Common.Converter.Base64Convert">
+        <member name="T:Ruru.Common.Config.INIParser">
             <summary>
-            Base64 String Convert Class
+            INI 설정파일을 사용할 수 있도록 합니다.
             </summary>
         </member>
-        <member name="M:Ruru.Common.Converter.Base64Convert.Base64Encode(System.String,System.Text.Encoding)">
+        <member name="M:Ruru.Common.Config.INIParser.#ctor(System.String)">
             <summary>
-            Base64 Encoding
+            INI 파일의 경로를 지정합니다.
             </summary>
-            <param name="src"></param>
-            <param name="enc"></param>
+            <param name="INIPath">INI 파일 경로</param>
+        </member>
+        <member name="M:Ruru.Common.Config.INIParser.WriteValue(System.String,System.String,System.String)">
+            <summary>
+            INI 파일에 값을 입력
+            </summary>
+            <param name="Section">섹션</param>
+            <param name="Key">키</param>
+            <param name="Value">값</param>
+        </member>
+        <member name="M:Ruru.Common.Config.INIParser.ReadValue(System.String,System.String)">
+            <summary>
+            INI 파일의 정보를 읽음
+            </summary>
+            <param name="Section">섹션</param>
+            <param name="Key">키</param>
+            <returns>값</returns>
+        </member>
+        <member name="M:Ruru.Common.Globalization.ResourceReader.GetValue(System.String,System.String)">
+            <summary>
+            resource 리소스 파일에서 key 값을 읽어온다.
+            현재 Thread의 UICulture 값을 기준으로 한다.
+            리소스 파일에서 키를 찾지 못할 경우, null이 반환된다.
+            </summary>
+            <param name="resource">대상 리소스 파일명</param>
+            <param name="key">리소스 파일에 포함되어 있는 키</param>
+            <returns>리소스 파일에서 키를 찾지 못할 경우, null이 반환된다.</returns>
+        </member>
+        <member name="M:Ruru.Common.Globalization.ResourceReader.GetValue(System.String,System.String,System.Globalization.CultureInfo)">
+            <summary>
+            resource 리소스 파일에서 key 값을 읽어온다.
+            리소스 파일에서 키를 찾지 못할 경우, null이 반환된다.
+            </summary>
+            <param name="resource">대상 리소스 파일명</param>
+            <param name="key">리소스 파일에 포함되어 있는 키</param>
+            <param name="cultureInfo">UICulture</param>
+            <returns>리소스 파일에서 키를 찾지 못할 경우, null이 반환된다.</returns>
+        </member>
+        <member name="M:Ruru.Common.Globalization.ResourceReader.GetString(System.String,System.String)">
+            <summary>
+            resource 리소스 파일에서 key 값을 읽어온다.
+            현재 Thread의 UICulture 값을 기준으로 한다.
+            리소스 파일에서 키를 찾지 못할 경우, '리소스명:키' 형식으로 반환된다.
+            </summary>
+            <param name="resource">대상 리소스 파일명</param>
+            <param name="key">리소스 파일에 포함되어 있는 키</param>
+            <returns>리소스 파일에서 키를 찾지 못할 경우, '리소스명:키' 형식으로 반환된다.</returns>
+        </member>
+        <member name="M:Ruru.Common.Globalization.ResourceReader.GetString(System.String,System.String,System.Globalization.CultureInfo)">
+            <summary>
+            resource 리소스 파일에서 key 값을 읽어온다.
+            리소스 파일에서 키를 찾지 못할 경우, '리소스명:키' 형식으로 반환된다.
+            </summary>
+            <param name="resource">대상 리소스 파일명</param>
+            <param name="key">리소스 파일에 포함되어 있는 키</param>
+            <param name="cultureInfo">UICulture</param>
+            <returns>리소스 파일에서 키를 찾지 못할 경우, '리소스명:키' 형식으로 반환된다.</returns>
+        </member>
+        <member name="M:Ruru.Common.Globalization.UICultureInfo.BuildUICulturePath(System.String)">
+            <summary>
+            스크립트 등의 경로가 언어 설정 별로 나뉘어져 있을 때 적합한 경로를 만들어서 반환해준다.
+            경로상에 현재 언어값을 LCID로 설정해준다.
+            </summary>
+            <param name="pathFormat">string.Format 메소드의 인수와 동일. 현재 언어값을 넣을 곳을 {0}으로 표시. (예: /_layouts/{0}/core.js)</param>
             <returns></returns>
         </member>
-        <member name="M:Ruru.Common.Converter.Base64Convert.Base64Decode(System.String)">
+        <member name="M:Ruru.Common.Globalization.UICultureInfo.BuildUICulturePath(System.String,Ruru.Common.Globalization.UICultureCodeType)">
             <summary>
-            Base64 Decode
+            스크립트 등의 경로가 언어 설정 별로 나뉘어져 있을 때 적합한 경로를 만들어서 반환해준다.
             </summary>
-            <param name="src"></param>
+            <param name="pathFormat">string.Format 메소드의 인수와 동일. 현재 언어값을 넣을 곳을 {0}으로 표시. (예: /_layouts/{0}/core.js)</param>
+            <param name="codeType">현재 언어값을 표시할 방식. LCID와 TwoLetterISOLanguageName 사용 가능. 기본값은 LCID</param>
             <returns></returns>
         </member>
-        <!-- 잘못된 형식의 XML 주석은 "T:Ruru.Common.Control.ExtendControl" 멤버에 대해 무시됩니다. -->
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``1(System.Windows.Forms.Control,System.Func{``0})">
+        <member name="P:Ruru.Common.Globalization.UICultureInfo.Current">
             <summary>
-            Invoke
+            현재 UI Culture를 반환함. 만약 지원하지 않는 Culture로 설정되어 있다면 기본 UI Culture를 반환함.
             </summary>
-            <typeparam name="TRet"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
+        </member>
+        <member name="P:Ruru.Common.Globalization.UICultureInfo.DefaultUICulture">
+            <summary>
+            기본 UI Culture LCID를 반환.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Globalization.UICultureInfo.EnabledUICultures">
+            <summary>
+            서버에서 지원하는 UI Culture LCID를 반환함.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.UIException.#ctor">
+            <summary>
+            이 생성자로 생성하지 마십시오.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Exceptions.UIException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            이 생성자로 생성하지 마십시오.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Web.UI.ContextMenu">
+            <summary>
+            Context Menu 호출시 Mene Type,Disable 여부,Custom Function 목록,function 파라미터 Value를 소스 컨트롤의 Attritue에 Append 함 
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String)">
+            <summary>
+            Attribute 생성
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.String)">
+            <summary>
+            Attribute 생성
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Hashtable)">
+            <summary>
+            function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute 생성
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="htValue">function에 전달할 argument 값</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Hashtable,System.String)">
+            <summary>
+            function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute 생성
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="htValue">function에 전달할 argument 값</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Hashtable,System.Collections.Hashtable,System.Collections.Hashtable)">
+            <summary>
+            Disable 여부,Custom Function 목록,function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute 생성
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="htDisabled">context Menu Item의 Disable 여부</param>
+            <param name="htFunc">기본 function 이외의 custome function 목록</param>
+            <param name="htValue">function에 전달할 argument 값</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Hashtable,System.Collections.Hashtable,System.Collections.Hashtable,System.String)">
+            <summary>
+            Disable 여부,Custom Function 목록,function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute 생성
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="htDisabled">context Menu Item의 Disable 여부</param>
+            <param name="htFunc">기본 function 이외의 custome function 목록</param>
+            <param name="htValue">function에 전달할 argument 값</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="collValue">function에 전달할 argument 값</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="collValue">function에 전달할 argument 값</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Disable 여부,Custom Function 목록,function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="collDisabled">context Menu Item의 Disable 여부</param>
+            <param name="collFunc">기본 function 이외의 custome function 목록</param>
+            <param name="collValue">function에 전달할 argument 값</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Disable 여부,Custom Function 목록,function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="collDisabled">context Menu Item의 Disable 여부</param>
+            <param name="collFunc">기본 function 이외의 custome function 목록</param>
+            <param name="collValue">function에 전달할 argument 값</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String)">
+            <summary>
+            Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.String)">
+            <summary>
+            Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Hashtable)">
+            <summary>
+            function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="htValue">function에 전달할 argument 값</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Hashtable,System.String)">
+            <summary>
+            function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="htValue">function에 전달할 argument 값</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Hashtable,System.Collections.Hashtable,System.Collections.Hashtable)">
+            <summary>
+            Disable 여부,Custom Function 목록,function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="htDisabled">context Menu Item의 Disable 여부</param>
+            <param name="htFunc">기본 function 이외의 custome function 목록</param>
+            <param name="htValue">function에 전달할 argument 값</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Hashtable,System.Collections.Hashtable,System.Collections.Hashtable,System.String)">
+            <summary>
+            Disable 여부,Custom Function 목록,function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="htDisabled">context Menu Item의 Disable 여부</param>
+            <param name="htFunc">기본 function 이외의 custome function 목록</param>
+            <param name="htValue">function에 전달할 argument 값</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="collValue">function에 전달할 argument 값</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="collValue">function에 전달할 argument 값</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Disable 여부,Custom Function 목록,function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="collDisabled">context Menu Item의 Disable 여부</param>
+            <param name="collFunc">기본 function 이외의 custome function 목록</param>
+            <param name="collValue">function에 전달할 argument 값</param>
+        </member>
+        <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Disable 여부,Custom Function 목록,function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
+            </summary>
+            <param name="obj">context menu가 수행될 컨트롤 </param>
+            <param name="menuType">context menu 형태</param>
+            <param name="collDisabled">context Menu Item의 Disable 여부</param>
+            <param name="collFunc">기본 function 이외의 custome function 목록</param>
+            <param name="collValue">function에 전달할 argument 값</param>
+            <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
+        </member>
+        <member name="T:Ruru.Common.Globalization.ResourceManagerHelper">
+            <summary>
+            Encapsulates a ResourceManager object used to acquire localized
+            strings specific to this tool.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Globalization.ResourceManagerHelper.CreateResourceManager(System.String)">
+            <summary>
+            지정된 타입의 ResourceManager 생성
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <param name="type"></param>
+        </member>
+        <member name="M:Ruru.Common.Globalization.ResourceManagerHelper.GetString(System.String)">
+            <summary>
+            ResourceManager에서 문자열을 가져옴
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <exception cref="T:System.Resources.MissingManifestResourceException"></exception>
+            <param name="name"></param>
             <returns></returns>
         </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``2(System.Windows.Forms.Control,System.Func{``0,``1},``0)">
+        <member name="T:Ruru.Common.OS.ServiceManager">
             <summary>
-            Invoke
+            
             </summary>
-            <typeparam name="T"></typeparam>
-            <typeparam name="TRet"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
-            <param name="argument"></param>
-            <returns></returns>
         </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``3(System.Windows.Forms.Control,System.Func{``0,``1,``2},``0,``1)">
+        <member name="M:Ruru.Common.OS.ServiceManager.ServiceStatus(System.String,System.String)">
             <summary>
-            Invoke
+            지정된 서버의 서비스 명을 찾아 있을 경우 서비스 상태를 반환
             </summary>
-            <typeparam name="T1"></typeparam>
-            <typeparam name="T2"></typeparam>
-            <typeparam name="TRet"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
-            <param name="argument1"></param>
-            <param name="argument2"></param>
-            <returns></returns>
+            <param name="sServiceName">서비스 이름</param>
+            <param name="sServiceServer">지정된 서버</param>
+            <returns><see cref="T:System.ServiceProcess.ServiceControllerStatus"/>서비스 상태 (Nillable)</returns>
         </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``4(System.Windows.Forms.Control,System.Func{``0,``1,``2,``3},``0,``1,``2)">
+        <member name="M:Ruru.Common.OS.ServiceManager.ServiceList(System.String)">
             <summary>
-            Invoke
+            지정된 서버의 서비스 목록을 반환
             </summary>
-            <typeparam name="T1"></typeparam>
-            <typeparam name="T2"></typeparam>
-            <typeparam name="T3"></typeparam>
-            <typeparam name="TRet"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
-            <param name="argument1"></param>
-            <param name="argument2"></param>
-            <param name="argument3"></param>
-            <returns></returns>
+            <param name="sServiceServer">지정된 서버</param>
+            <exception cref="T:System.ComponentModel.Win32Exception">An error occurred when accessing a system API.</exception>
+            <returns><see cref="T:System.Collections.Generic.List`1"/> 서비스 목록</returns>
         </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``5(System.Windows.Forms.Control,System.Func{``0,``1,``2,``3,``4},``0,``1,``2,``3)">
+        <member name="T:Ruru.Common.OS.ServiceManager.ServiceStatusClass">
             <summary>
-            Invoke
+            
             </summary>
-            <typeparam name="T1"></typeparam>
-            <typeparam name="T2"></typeparam>
-            <typeparam name="T3"></typeparam>
-            <typeparam name="T4"></typeparam>
-            <typeparam name="TRet"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
-            <param name="argument1"></param>
-            <param name="argument2"></param>
-            <param name="argument3"></param>
-            <param name="argument4"></param>
-            <returns></returns>
         </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync(System.Windows.Forms.Control,System.Action)">
+        <member name="F:Ruru.Common.OS.ServiceManager.ServiceStatusClass.Status">
             <summary>
-            Invoke
+            
             </summary>
-            <param name="c"></param>
-            <param name="func"></param>
         </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``1(System.Windows.Forms.Control,System.Action{``0},``0)">
+        <member name="F:Ruru.Common.OS.ServiceManager.ServiceStatusClass.Service">
             <summary>
-            Invoke
+            
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
-            <param name="argument"></param>
         </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``2(System.Windows.Forms.Control,System.Action{``0,``1},``0,``1)">
-            <summary>
-            Invoke
-            </summary>
-            <typeparam name="T1"></typeparam>
-            <typeparam name="T2"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
-            <param name="argument1"></param>
-            <param name="argument2"></param>
-        </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``3(System.Windows.Forms.Control,System.Action{``0,``1,``2},``0,``1,``2)">
-            <summary>
-            Invoke
-            </summary>
-            <typeparam name="T1"></typeparam>
-            <typeparam name="T2"></typeparam>
-            <typeparam name="T3"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
-            <param name="argument1"></param>
-            <param name="argument2"></param>
-            <param name="argument3"></param>
-        </member>
-        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``4(System.Windows.Forms.Control,System.Action{``0,``1,``2,``3},``0,``1,``2,``3)">
-            <summary>
-            Invoke
-            </summary>
-            <typeparam name="T1"></typeparam>
-            <typeparam name="T2"></typeparam>
-            <typeparam name="T3"></typeparam>
-            <typeparam name="T4"></typeparam>
-            <param name="c"></param>
-            <param name="func"></param>
-            <param name="argument1"></param>
-            <param name="argument2"></param>
-            <param name="argument3"></param>
-            <param name="argument4"></param>
-        </member>
-        <member name="T:Ruru.Common.ConsoleUtil">
+        <member name="T:Ruru.Common.OS.ConsoleUtil">
             <summary>
             Windows System의 Colsole 명령어를 실행할 수 있도록 함
             </summary>
         </member>
-        <member name="M:Ruru.Common.ConsoleUtil.Run(System.String,System.String)">
+        <member name="M:Ruru.Common.OS.ConsoleUtil.Run(System.String,System.String)">
             <summary>
             Windows System의 Console 명령어와 인자를 받아 명령어 실행 후 결과를 반환
             </summary>
@@ -895,9 +1525,59 @@
             <param name="Argments"><see cref="T:System.String"/> 명령어 인자</param>
             <returns><see cref="T:System.String"/> 명령 실행 결과</returns>
         </member>
-        <member name="T:Ruru.Common.Converter.XmlConvert">
+        <member name="T:Ruru.Common.OS.ProcessLaunch">
             <summary>
-            XML Convert Class
+            보이지 않게 Background로 Process 실행을 위한 클래스
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.OS.ProcessLaunch.#ctor">
+            <summary>
+            기본 생성자
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.OS.ProcessLaunch.RunProcess">
+            <summary>
+            프로세스 실행
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.OS.ProcessLaunch.Args">
+            <summary>
+            명령 실행 인자값을 설정합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.OS.ProcessLaunch.ErrorMessage">
+            <summary>
+            오류 메시지를 확인합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.OS.ProcessLaunch.Filename">
+            <summary>
+            실행할 파일명을 지정합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.OS.ProcessLaunch.ProcessOutput">
+            <summary>
+            프로그램 실행 후 반환되는 결과값을 가집니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.OS.ProcessLaunch.ProgramFilesDir">
+            <summary>
+            ProgramFiles 디렉토리가 지정됩니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.OS.ProcessLaunch.UseShellExecute">
+            <summary>
+            실행 시 Console Shell 창을 사용할지 여부 지정
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.OS.ProcessLaunch.WindowStyle">
+            <summary>
+            프로세스 창 스타일을 지정
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.OS.ProcessLaunch.WorkingDir">
+            <summary>
+            프로세스의 작업 디렉토리 지정
             </summary>
         </member>
     </members>

@@ -1,4 +1,4 @@
-﻿namespace Ruru.Common
+﻿namespace Ruru.Common.Exceptions
 {
     using System;
     using System.IO;

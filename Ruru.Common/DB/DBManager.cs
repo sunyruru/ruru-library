@@ -1,4 +1,4 @@
-﻿namespace Ruru.Common
+﻿namespace Ruru.Common.DB
 {
     using System;
     using System.Collections;

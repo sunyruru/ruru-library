@@ -1,4 +1,4 @@
-﻿namespace Ruru.Common
+﻿namespace Ruru.Common.OS
 {
     using System;
     using System.ComponentModel;

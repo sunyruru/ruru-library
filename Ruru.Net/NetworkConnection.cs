@@ -3,10 +3,10 @@
     using System;
     using System.Net;
     using System.Net.Security;
-    using System.Security.Principal;
     using System.Net.Sockets;
-    using System.Threading;
     using System.Runtime.InteropServices;
+    using System.Security.Principal;
+    using System.Threading;
 
     /// <summary>
     /// 네트워크 경로에 대한 연결
@@ -72,11 +72,11 @@
         {
             string sResult = string.Empty;
             string sDir = string.Empty;
-            Ruru.Common.ConsoleUtil oConsole = null;
+            Ruru.Common.OS.ConsoleUtil oConsole = null;
 
             try
             {
-                oConsole = new Common.ConsoleUtil();
+                oConsole = new Common.OS.ConsoleUtil();
                 sDir = (Path.IndexOf('$') == -1) ? Path : System.IO.Path.GetDirectoryName(Path).Trim();
 
                 sResult = oConsole.Run("cmd.exe", string.Format("/C \"NET USE \"{0}\" /user:{1} {2}\"", sDir, username, password));
@@ -98,11 +98,11 @@
         {
             string sResult = string.Empty;
             string sDir = string.Empty;
-            Ruru.Common.ConsoleUtil oConsole = null;
+            Ruru.Common.OS.ConsoleUtil oConsole = null;
 
             try
             {
-                oConsole = new Common.ConsoleUtil();
+                oConsole = new Common.OS.ConsoleUtil();
                 sDir = (Path.IndexOf('$') == -1) ? Path : System.IO.Path.GetDirectoryName(Path).Trim();
 
                 sResult = oConsole.Run("cmd.exe", string.Format("/C \"NET USE \"{0}\" /delete\"", sDir));

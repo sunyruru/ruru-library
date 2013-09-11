@@ -5,10 +5,10 @@
 
     /// <summary>
     /// Control의 Invoke에 대한 확장 메소드 제공
-    /// <example>
-    /// int count = f.InvokeSync<int>(() => f.Controls.Count);
-    /// </example>
     /// </summary>
+    /// <example>
+    /// int count = f.InvokeSync&lt;int&gt;(() => f.Controls.Count);
+    /// </example>
     public static class ExtendControl
     {
         /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace Ruru.Common
+﻿namespace Ruru.Common.Globalization
 {
     /// <summary>
     /// Encapsulates a ResourceManager object used to acquire localized

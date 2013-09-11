@@ -42,32 +42,49 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleUtil.cs" />
+    <Compile Include="Config\ConfigReader.cs" />
+    <Compile Include="Config\ConfigSection.cs" />
+    <Compile Include="OS\ConsoleUtil.cs" />
     <Compile Include="Control\ExtendControl.cs" />
     <Compile Include="Converter\Base64Convert.cs" />
     <Compile Include="Converter\ConvertBase.cs" />
     <Compile Include="Converter\FileSize.cs" />
     <Compile Include="Converter\XmlConvert.cs" />
-    <Compile Include="DBManager.cs" />
-    <Compile Include="INIParser.cs" />
-    <Compile Include="LogWriter.cs" />
-    <Compile Include="ProcessLaunch.cs" />
+    <Compile Include="DB\BaseBiz.cs" />
+    <Compile Include="DB\BaseDAC.cs" />
+    <Compile Include="DB\DBManager.cs" />
+    <Compile Include="DB\SqlParamCollection.cs" />
+    <Compile Include="Disk\DirectoryUtil.cs" />
+    <Compile Include="Disk\FileUtil.cs" />
+    <Compile Include="Exceptions\LogData.cs" />
+    <Compile Include="Exceptions\LogManager.cs" />
+    <Compile Include="Config\INIParser.cs" />
+    <Compile Include="Exceptions\LogWriter.cs" />
+    <Compile Include="Exceptions\UIException.cs" />
+    <Compile Include="Globalization\ResourceReader.cs" />
+    <Compile Include="Globalization\UICultureInfo.cs" />
+    <Compile Include="OS\ProcessLaunch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceManager.cs" />
+    <Compile Include="Globalization\ResourceManager.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ServiceManager.cs" />
+    <Compile Include="OS\ServiceManager.cs" />
+    <Compile Include="Web\HttpCacheUtil.cs" />
+    <Compile Include="Web\HttpCookieUtil.cs" />
+    <Compile Include="Web\UI\ContextMenu.cs" />
     <Compile Include="Win32\IRegistryAccessor.cs" />
     <Compile Include="Win32\IRegistryKey.cs" />
     <Compile Include="Win32\RegistryAccess.cs" />
@@ -85,6 +102,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

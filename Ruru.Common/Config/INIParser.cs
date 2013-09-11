@@ -1,4 +1,4 @@
-﻿namespace Ruru.Common
+﻿namespace Ruru.Common.Config
 {
     using System.Runtime.InteropServices;
     using System.Text;

@@ -4,7 +4,7 @@
     using System.Collections;
     using System.Text;
 
-    using Ruru.Common;
+    using Ruru.Common.OS;
 
 
     /// <summary>

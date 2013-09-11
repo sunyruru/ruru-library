@@ -14,7 +14,6 @@ R:\Dev\Library\RuruLib\Ruru.Net\bin\Debug\Ruru.Common.xml
 R:\Dev\Library\RuruLib\Ruru.Net\obj\Debug\ResolveAssemblyReference.cache
 R:\Dev\Library\RuruLib\Ruru.Net\obj\Debug\Ruru.Net.dll
 R:\Dev\Library\RuruLib\Ruru.Net\obj\Debug\Ruru.Net.pdb
-R:\Dev\Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.XML
 R:\Dev\Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.dll
 R:\Dev\Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.pdb
 R:\Dev\Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Common.dll
