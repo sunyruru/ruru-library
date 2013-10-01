@@ -206,6 +206,7 @@
             Gets the full name of the registry key.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="T:Ruru.Common.Converter.XmlConvert">
             <summary>
             XML Convert Class
@@ -684,6 +685,9 @@
             <param name="cookieName">쿠키 이름</param>
         </member>
         <member name="T:Ruru.Common.DB.DBManager">
+=======
+        <member name="T:Ruru.Common.DBManager">
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             <summary>
             Database 관련 Class
             </summary>
@@ -826,6 +830,7 @@
             DBManager 에서 발생한 가장 마지막 Exception을 반환합니다.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.DB.BaseDAC.#ctor">
             <summary>
             'VPD' ConnectionString으로 연결을 생성한다.
@@ -834,9 +839,25 @@
         <member name="M:Ruru.Common.DB.BaseDAC.#ctor(System.String)">
             <summary>
             인수로 받은 ConnectionString으로 연결을 생성한다.
+=======
+        <member name="T:Ruru.Common.Converter.XmlConvert">
+            <summary>
+            XML Convert Class
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Converter.ConvertBase">
+            <summary>
+            Convert Base Class
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.Converter.Base64Convert">
+            <summary>
+            Base64 String Convert Class
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="connectionString"></param>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.DB.BaseDAC.Dispose">
             <summary>
             Connection을 해제한다.
@@ -945,13 +966,116 @@
         <member name="P:Ruru.Common.DB.BaseDAC.Connection">
             <summary>
             현재 연결된 SqlConnection을 반환
+=======
+        <member name="M:Ruru.Common.Converter.Base64Convert.Base64Encode(System.String,System.Text.Encoding)">
+            <summary>
+            Base64 Encoding
+            </summary>
+            <param name="src"></param>
+            <param name="enc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Converter.Base64Convert.Base64Decode(System.String)">
+            <summary>
+            Base64 Decode
+            </summary>
+            <param name="src"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ruru.Common.ConsoleUtil">
+            <summary>
+            Windows System의 Colsole 명령어를 실행할 수 있도록 함
             </summary>
         </member>
+        <member name="M:Ruru.Common.ConsoleUtil.Run(System.String,System.String)">
+            <summary>
+            Windows System의 Console 명령어와 인자를 받아 명령어 실행 후 결과를 반환
+            </summary>
+            <param name="FileName"><see cref="T:System.String"/> 실행 파일명</param>
+            <param name="Argments"><see cref="T:System.String"/> 명령어 인자</param>
+            <returns><see cref="T:System.String"/> 명령 실행 결과</returns>
+        </member>
+        <member name="T:Ruru.Common.Control.ExtendControl">
+            <summary>
+            Control의 Invoke에 대한 확장 메소드 제공
+            </summary>
+            <example>
+            int count = f.InvokeSync&lt;int&gt;(() => f.Controls.Count);
+            </example>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``1(System.Windows.Forms.Control,System.Func{``0})">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``2(System.Windows.Forms.Control,System.Func{``0,``1},``0)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``3(System.Windows.Forms.Control,System.Func{``0,``1,``2},``0,``1)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``4(System.Windows.Forms.Control,System.Func{``0,``1,``2,``3},``0,``1,``2)">
+            <summary>
+            Invoke
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <param name="argument3"></param>
+            <returns></returns>
+        </member>
+<<<<<<< HEAD
         <member name="P:Ruru.Common.DB.BaseDAC.ConnectionString">
             <summary>
             현재 연결된 Connection String을 반환
+=======
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``5(System.Windows.Forms.Control,System.Func{``0,``1,``2,``3,``4},``0,``1,``2,``3)">
+            <summary>
+            Invoke
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <typeparam name="T4"></typeparam>
+            <typeparam name="TRet"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <param name="argument3"></param>
+            <param name="argument4"></param>
+            <returns></returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Exceptions.LogManager.WriteInformation(Ruru.Common.Exceptions.LogSourceType,System.String,System.String)">
             <summary>
             메시지 로깅.
@@ -995,10 +1119,71 @@
             <summary>
             Exception.Data에 LogData에 포함된 Values 데이터 추가. 예외 처리됨.
             이미 키가 있을 경우, 덮어써짐.
+=======
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync(System.Windows.Forms.Control,System.Action)">
+            <summary>
+            Invoke
+            </summary>
+            <param name="c"></param>
+            <param name="func"></param>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``1(System.Windows.Forms.Control,System.Action{``0},``0)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument"></param>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``2(System.Windows.Forms.Control,System.Action{``0,``1},``0,``1)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``3(System.Windows.Forms.Control,System.Action{``0,``1,``2},``0,``1,``2)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <param name="argument3"></param>
+        </member>
+        <member name="M:Ruru.Common.Control.ExtendControl.InvokeSync``4(System.Windows.Forms.Control,System.Action{``0,``1,``2,``3},``0,``1,``2,``3)">
+            <summary>
+            Invoke
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <typeparam name="T3"></typeparam>
+            <typeparam name="T4"></typeparam>
+            <param name="c"></param>
+            <param name="func"></param>
+            <param name="argument1"></param>
+            <param name="argument2"></param>
+            <param name="argument3"></param>
+            <param name="argument4"></param>
+        </member>
+        <member name="T:Ruru.Common.Win32.IRegistryAccessor">
+            <summary>
+            Provides access to the registry.
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="ex">Exception 개체</param>
             <param name="data">Value가 포함된 LogData 개체</param>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Exceptions.LogManager.WriteError(Ruru.Common.Exceptions.LogSourceType,System.Exception)">
             <summary>
             오류 로깅.
@@ -1126,18 +1311,80 @@
         <member name="M:Ruru.Common.Exceptions.LogWriter.GetFileName(System.String)">
             <summary>
             파일 경로의 파일을 읽음
+=======
+        <member name="P:Ruru.Common.Win32.IRegistryAccessor.CurrentUser">
+            <summary>
+            Gets registry key HKCU.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Win32.IRegistryAccessor.LocalMachine">
+            <summary>
+            Gets registry key HKLM.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.ProcessLaunch">
+            <summary>
+            보이지 않게 Background로 Process 실행을 위한 클래스
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.ProcessLaunch.#ctor">
+            <summary>
+            기본 생성자
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.ProcessLaunch.RunProcess">
+            <summary>
+            프로세스 실행
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.Args">
+            <summary>
+            명령 실행 인자값을 설정합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.ErrorMessage">
+            <summary>
+            오류 메시지를 확인합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.Filename">
+            <summary>
+            실행할 파일명을 지정합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.ProcessOutput">
+            <summary>
+            프로그램 실행 후 반환되는 결과값을 가집니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.ProgramFilesDir">
+            <summary>
+            ProgramFiles 디렉토리가 지정됩니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.ProcessLaunch.UseShellExecute">
+            <summary>
+            실행 시 Console Shell 창을 사용할지 여부 지정
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="strPath">파일 경로</param>
             <returns>파일 내용</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Exceptions.LogWriter.GetFileName(System.String,System.Int32)">
             <summary>
             파일 경로의 파일을 지정 위치부터 읽음
+=======
+        <member name="P:Ruru.Common.ProcessLaunch.WindowStyle">
+            <summary>
+            프로세스 창 스타일을 지정
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="strPath">파일 경로</param>
             <param name="idx">파일 커서 위치</param>
             <returns>파일 내용</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Exceptions.LogWriter.Dispose">
             <summary>
             사용 Unmanaged 자원의 해제
@@ -1156,13 +1403,49 @@
         <member name="F:Ruru.Common.Exceptions.LogWriter.LogType.DEPT">
             <summary>
             부서
+=======
+        <member name="P:Ruru.Common.ProcessLaunch.WorkingDir">
+            <summary>
+            프로세스의 작업 디렉토리 지정
             </summary>
         </member>
+        <member name="T:Ruru.Common.Converter.FileSize">
+            <summary>
+            파일 사이즈를 간편하게 표시해주는 클래스
+            </summary>
+            <example>
+            FileSize.GetSize(1024L);
+            Expect return string : "1KB"
+            </example>
+        </member>
+        <member name="M:Ruru.Common.Converter.FileSize.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Converter.FileSize.#ctor(System.Double)">
+            <summary>
+            Size를 지정한 Constructor
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
+            </summary>
+            <param name="size"></param>
+        </member>
+<<<<<<< HEAD
         <member name="T:Ruru.Common.Config.INIParser">
             <summary>
             INI 설정파일을 사용할 수 있도록 합니다.
+=======
+        <member name="M:Ruru.Common.Converter.FileSize.GetSize(System.Double)">
+            <summary>
+            사이즈를 지정하여 그에 해당하는 가장 짧은 파일 크기 문자열 반환
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.FormatException"></exception>
+            <param name="size"></param>
+            <returns></returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Config.INIParser.#ctor(System.String)">
             <summary>
             INI 파일의 경로를 지정합니다.
@@ -1172,75 +1455,131 @@
         <member name="M:Ruru.Common.Config.INIParser.WriteValue(System.String,System.String,System.String)">
             <summary>
             INI 파일에 값을 입력
+=======
+        <member name="M:Ruru.Common.Converter.FileSize.ToString">
+            <summary>
+            파일사이즈의 가장 짧은 문자열로 반환
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.FormatException"></exception>
+            <returns></returns>
+        </member>
+        <member name="P:Ruru.Common.Converter.FileSize.B">
+            <summary>
+            Byte Size
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="Section">섹션</param>
             <param name="Key">키</param>
             <param name="Value">값</param>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Config.INIParser.ReadValue(System.String,System.String)">
             <summary>
             INI 파일의 정보를 읽음
+=======
+        <member name="P:Ruru.Common.Converter.FileSize.KB">
+            <summary>
+            KB Size
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="Section">섹션</param>
             <param name="Key">키</param>
             <returns>값</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Globalization.ResourceReader.GetValue(System.String,System.String)">
             <summary>
             resource 리소스 파일에서 key 값을 읽어온다.
             현재 Thread의 UICulture 값을 기준으로 한다.
             리소스 파일에서 키를 찾지 못할 경우, null이 반환된다.
+=======
+        <member name="P:Ruru.Common.Converter.FileSize.MB">
+            <summary>
+            MB Size
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="resource">대상 리소스 파일명</param>
             <param name="key">리소스 파일에 포함되어 있는 키</param>
             <returns>리소스 파일에서 키를 찾지 못할 경우, null이 반환된다.</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Globalization.ResourceReader.GetValue(System.String,System.String,System.Globalization.CultureInfo)">
             <summary>
             resource 리소스 파일에서 key 값을 읽어온다.
             리소스 파일에서 키를 찾지 못할 경우, null이 반환된다.
+=======
+        <member name="P:Ruru.Common.Converter.FileSize.GB">
+            <summary>
+            GB Size
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="resource">대상 리소스 파일명</param>
             <param name="key">리소스 파일에 포함되어 있는 키</param>
             <param name="cultureInfo">UICulture</param>
             <returns>리소스 파일에서 키를 찾지 못할 경우, null이 반환된다.</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Globalization.ResourceReader.GetString(System.String,System.String)">
             <summary>
             resource 리소스 파일에서 key 값을 읽어온다.
             현재 Thread의 UICulture 값을 기준으로 한다.
             리소스 파일에서 키를 찾지 못할 경우, '리소스명:키' 형식으로 반환된다.
+=======
+        <member name="P:Ruru.Common.Converter.FileSize.TB">
+            <summary>
+            TB Size
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="resource">대상 리소스 파일명</param>
             <param name="key">리소스 파일에 포함되어 있는 키</param>
             <returns>리소스 파일에서 키를 찾지 못할 경우, '리소스명:키' 형식으로 반환된다.</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Globalization.ResourceReader.GetString(System.String,System.String,System.Globalization.CultureInfo)">
             <summary>
             resource 리소스 파일에서 key 값을 읽어온다.
             리소스 파일에서 키를 찾지 못할 경우, '리소스명:키' 형식으로 반환된다.
+=======
+        <member name="T:Ruru.Common.Converter.FileSize.UNITS">
+            <summary>
+            Size 단위
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="resource">대상 리소스 파일명</param>
             <param name="key">리소스 파일에 포함되어 있는 키</param>
             <param name="cultureInfo">UICulture</param>
             <returns>리소스 파일에서 키를 찾지 못할 경우, '리소스명:키' 형식으로 반환된다.</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Globalization.UICultureInfo.BuildUICulturePath(System.String)">
             <summary>
             스크립트 등의 경로가 언어 설정 별로 나뉘어져 있을 때 적합한 경로를 만들어서 반환해준다.
             경로상에 현재 언어값을 LCID로 설정해준다.
+=======
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.B">
+            <summary>
+            Byte
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="pathFormat">string.Format 메소드의 인수와 동일. 현재 언어값을 넣을 곳을 {0}으로 표시. (예: /_layouts/{0}/core.js)</param>
             <returns></returns>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Globalization.UICultureInfo.BuildUICulturePath(System.String,Ruru.Common.Globalization.UICultureCodeType)">
             <summary>
             스크립트 등의 경로가 언어 설정 별로 나뉘어져 있을 때 적합한 경로를 만들어서 반환해준다.
+=======
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.KB">
+            <summary>
+            KB
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="pathFormat">string.Format 메소드의 인수와 동일. 현재 언어값을 넣을 곳을 {0}으로 표시. (예: /_layouts/{0}/core.js)</param>
             <param name="codeType">현재 언어값을 표시할 방식. LCID와 TwoLetterISOLanguageName 사용 가능. 기본값은 LCID</param>
             <returns></returns>
         </member>
+<<<<<<< HEAD
         <member name="P:Ruru.Common.Globalization.UICultureInfo.Current">
             <summary>
             현재 UI Culture를 반환함. 만약 지원하지 않는 Culture로 설정되어 있다면 기본 UI Culture를 반환함.
@@ -1281,14 +1620,66 @@
         <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.String)">
             <summary>
             Attribute 생성
+=======
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.MB">
+            <summary>
+            MB
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.GB">
+            <summary>
+            GB
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.Converter.FileSize.UNITS.TB">
+            <summary>
+            TB
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.ServiceManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.ServiceManager.ServiceStatus(System.String,System.String)">
+            <summary>
+            지정된 서버의 서비스 명을 찾아 있을 경우 서비스 상태를 반환
+            </summary>
+            <param name="sServiceName">서비스 이름</param>
+            <param name="sServiceServer">지정된 서버</param>
+            <returns><see cref="T:System.ServiceProcess.ServiceControllerStatus"/>서비스 상태 (Nillable)</returns>
+        </member>
+        <member name="M:Ruru.Common.ServiceManager.ServiceList(System.String)">
+            <summary>
+            지정된 서버의 서비스 목록을 반환
+            </summary>
+            <param name="sServiceServer">지정된 서버</param>
+            <exception cref="T:System.ComponentModel.Win32Exception">An error occurred when accessing a system API.</exception>
+            <returns><see cref="T:System.Collections.Generic.List`1"/> 서비스 목록</returns>
+        </member>
+        <member name="T:Ruru.Common.ServiceManager.ServiceStatusClass">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Ruru.Common.ServiceManager.ServiceStatusClass.Status">
+            <summary>
+            
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="obj">context menu가 수행될 컨트롤 </param>
             <param name="menuType">context menu 형태</param>
             <param name="selType">context menu를 표시한 소스 컨트롤의 선택 표현 방식. SelectionType에 정의된 값 사용.</param>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Hashtable)">
             <summary>
             function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute 생성
+=======
+        <member name="F:Ruru.Common.ServiceManager.ServiceStatusClass.Service">
+            <summary>
+            
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             </summary>
             <param name="obj">context menu가 수행될 컨트롤 </param>
             <param name="menuType">context menu 형태</param>
@@ -1332,6 +1723,7 @@
             <param name="menuType">context menu 형태</param>
             <param name="collValue">function에 전달할 argument 값</param>
         </member>
+<<<<<<< HEAD
         <member name="M:Ruru.Common.Web.UI.ContextMenu.GetAttributeHtml(System.String,System.Collections.Specialized.NameValueCollection,System.String)">
             <summary>
             function 파라미터 Value를 NameValueCollection으로 넘겨 받아서 Attribute Append
@@ -1405,6 +1797,9 @@
             <param name="htValue">function에 전달할 argument 값</param>
         </member>
         <member name="M:Ruru.Common.Web.UI.ContextMenu.AddAttribute(System.Web.UI.WebControls.WebControl,System.String,System.Collections.Hashtable,System.Collections.Hashtable,System.Collections.Hashtable,System.String)">
+=======
+        <member name="T:Ruru.Common.LogWriter">
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
             <summary>
             Disable 여부,Custom Function 목록,function 파라미터 Value를 Hashtable로 넘겨 받아서 Attribute Append
             </summary>
@@ -1497,6 +1892,7 @@
             <exception cref="T:System.ComponentModel.Win32Exception">An error occurred when accessing a system API.</exception>
             <returns><see cref="T:System.Collections.Generic.List`1"/> 서비스 목록</returns>
         </member>
+<<<<<<< HEAD
         <member name="T:Ruru.Common.OS.ServiceManager.ServiceStatusClass">
             <summary>
             
@@ -1578,7 +1974,102 @@
         <member name="P:Ruru.Common.OS.ProcessLaunch.WorkingDir">
             <summary>
             프로세스의 작업 디렉토리 지정
+=======
+        <member name="T:Ruru.Common.Win32.RegistryAccessException">
+            <summary>
+            Represents an error that occurs while accessing the registry.
             </summary>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with a specified error message 
+            and a reference to the inner exception that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="inner">The inner exception reference.</param>
+        </member>
+        <member name="M:Ruru.Common.Win32.RegistryAccessException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ruru.Common.Win32.RegistryAccessException"/> class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Ruru.Common.Resources">
+            <summary>
+              지역화된 문자열 등을 찾기 위한 강력한 형식의 리소스 클래스입니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ResourceManager">
+            <summary>
+              이 클래스에서 사용하는 캐시된 ResourceManager 인스턴스를 반환합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.Culture">
+            <summary>
+              이 강력한 형식의 리소스 클래스를 사용하여 모든 리소스 조회에 대한 현재 스레드의 CurrentUICulture
+              속성을 재정의합니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionArgumentEmpty">
+            <summary>
+              {0} 인자 값이 없음과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionMissingRegistryValue">
+            <summary>
+              {0}:{1} 값이 없음과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueNotEnumValue">
+            <summary>
+              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueNotTypeName">
+            <summary>
+              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="P:Ruru.Common.Resources.ExceptionRegistryValueOfWrongType">
+            <summary>
+              {0}:{1}/{2}:{3}과(와) 유사한 지역화된 문자열을 찾습니다.
+            </summary>
+        </member>
+        <member name="T:Ruru.Common.ResourceManagerHelper">
+            <summary>
+            Encapsulates a ResourceManager object used to acquire localized
+            strings specific to this tool.
+            </summary>
+        </member>
+        <member name="M:Ruru.Common.ResourceManagerHelper.CreateResourceManager(System.String)">
+            <summary>
+            지정된 타입의 ResourceManager 생성
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <param name="type"></param>
+        </member>
+        <member name="M:Ruru.Common.ResourceManagerHelper.GetString(System.String)">
+            <summary>
+            ResourceManager에서 문자열을 가져옴
+>>>>>>> 2f692fa30ad149d7172d6e915d20325e09a2f80f
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <exception cref="T:System.Resources.MissingManifestResourceException"></exception>
+            <param name="name"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

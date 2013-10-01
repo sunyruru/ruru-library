@@ -32,3 +32,4 @@ F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Common\obj\Debug\GenerateResou
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Common\obj\Debug\ResGen.write.1.tlog
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.dll
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.pdb
+R:\Dev\Library\ruru-library\Ruru.Common\bin\Debug\Ruru.Common.XML
