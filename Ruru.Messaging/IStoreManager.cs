@@ -19,12 +19,15 @@
         void Dispose();
 
         /// <summary>
-        /// 
+        /// 연결을 생성하거나 가져옵니다
         /// </summary>
         /// <param name="sQueuePath"></param>
         /// <param name="oMode"></param>
         /// <returns></returns>
         object GetConnection(string sQueuePath, StoreManagerMode oMode);
+        /// <summary>
+        /// 메시지를 가져옵니다
+        /// </summary>
         System.Messaging.Message GetMsg();
     }
 }
