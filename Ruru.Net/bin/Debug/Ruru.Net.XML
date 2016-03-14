@@ -4,45 +4,141 @@
         <name>Ruru.Net</name>
     </assembly>
     <members>
-        <member name="T:Ruru.Net.MailSendManager">
+        <member name="T:Ruru.Net.DnsRecordType">
             <summary>
-            메일 발송 도우미
+            DNS 레코드 쿼리 방식
             </summary>
         </member>
-        <member name="M:Ruru.Net.MailSendManager.#ctor">
+        <member name="F:Ruru.Net.DnsRecordType.SRV">
+            <summary>
+            SRV 레코드
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsRecordType.A">
+            <summary>
+            호스트 레코드
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsRecordType.CNAME">
+            <summary>
+            ALIAS 레코드
+            </summary>
+        </member>
+        <member name="T:Ruru.Net.DnsUtil">
+            <summary>
+            DNS 관련 명령어 실행
+            </summary>
+        </member>
+        <member name="M:Ruru.Net.DnsUtil.#ctor">
             <summary>
             기본 생성자
             </summary>
         </member>
-        <member name="M:Ruru.Net.MailSendManager.#ctor(System.String)">
+        <member name="M:Ruru.Net.DnsUtil.OcsDnsRun(System.String)">
             <summary>
-            지정된 호스트에 접속합니다.
+            DNS 쿼리로 OCS 관련 DNS 레코드 조회
             </summary>
-            <param name="sHost">지정된 메일 발신 호스트 <see cref="T:System.String"/></param>
+            <param name="sDomain">OCS 도메인을 지정합니다.</param>
+            <returns>결과를 ArrayList로 반환합니다.</returns>
         </member>
-        <member name="M:Ruru.Net.MailSendManager.#ctor(System.String,System.Int32)">
+        <member name="T:Ruru.Net.DnsQuery">
             <summary>
-            지정된 호스트와 포트에 접속합니다.
+            DNS Query에 대한 데이터 구조
             </summary>
-            <param name="sHost">지정된 메일 발신 호스트 <see cref="T:System.String"/></param>
-            <param name="iPort">지정된 메일 발신 포트 <see cref="T:System.Int32"/></param>
         </member>
-        <member name="M:Ruru.Net.MailSendManager.SendMail(System.Net.Mail.MailMessage)">
+        <member name="P:Ruru.Net.DnsQuery.QueryType">
             <summary>
-            배달용 SMTP 서버로 지정된 메시지를 보냅니다.
+            DNS Query의 타입을 지정합니다.
             </summary>
-            <param name="message">보낼 메시지가 들어 있는 <see cref="T:System.Net.Mail.MailMessage"/>입니다.</param>
-            <returns>성공 여부를 알려주는 <see cref="T:System.Boolean"/> 값입니다.</returns>
         </member>
-        <member name="M:Ruru.Net.MailSendManager.SendMail(System.String,System.String,System.String,System.String)">
+        <member name="P:Ruru.Net.DnsQuery.Record">
             <summary>
-            배달용 SMTP 서버로 지정된 전자 메일 메시지를 보냅니다. 메시지의 보낸 사람, 받는 사람, 제목 및 메시지 본문은 <see cref="T:System.String"/> 개체를 사용하여 지정됩니다.
+            DNS Queyr의 레코드를 지정합니다.
             </summary>
-            <param name="from">메시지의 보낸 사람 주소 정보가 들어 있는 <see cref="T:System.String"/>입니다.</param>
-            <param name="recipients">메시지를 보낼 대상 주소가 들어 있는 입니다.</param>
-            <param name="subject">메시지의 제목 줄이 들어 있는 <see cref="T:System.String"/>입니다.</param>
-            <param name="body">메시지 본문이 들어 있는 <see cref="T:System.String"/>입니다.</param>
-            <returns>성공 여부를 알려주는 <see cref="T:System.Boolean"/> 값입니다.</returns>
+        </member>
+        <member name="M:Ruru.Net.DnsQuery.#ctor(Ruru.Net.DnsRecordType,System.String)">
+            <summary>
+            기본 생성자로 DNS QueryType과 레코드를 지정합니다.
+            </summary>
+            <param name="i_recordType"></param>
+            <param name="i_record"></param>
+        </member>
+        <member name="T:Ruru.Net.DnsResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsResult.foundRecord">
+            <summary>
+            찾은 레코드
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsResult.hostname">
+            <summary>
+            호스트명
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsResult.ip">
+            <summary>
+            IP주소
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsResult.port">
+            <summary>
+            포트번호
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsResult.priority">
+            <summary>
+            중요도
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsResult.query">
+            <summary>
+            쿼리
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.DnsResult.weight">
+            <summary>
+            Weight
+            </summary>
+        </member>
+        <member name="T:Ruru.Net.ParseDnsResult">
+            <summary>
+            DNS 결과 분석
+            </summary>
+        </member>
+        <member name="F:Ruru.Net.ParseDnsResult.m_dnsResult">
+            <summary>
+            DNS 조회 결과
+            </summary>
+        </member>
+        <member name="M:Ruru.Net.ParseDnsResult.#ctor(Ruru.Net.DnsQuery,System.String)">
+            <summary>
+            DNS 조회 결과 분석
+            </summary>
+            <param name="i_dnsQuery"></param>
+            <param name="i_nslookupResults"></param>
+        </member>
+        <member name="T:Ruru.Net.InternetCheck">
+            <summary>
+            인터넷 연결여부 체크
+            </summary>
+        </member>
+        <member name="P:Ruru.Net.InternetCheck.IsInternetConnected">
+            <summary>
+            인터넷 연결여부
+            </summary>
+        </member>
+        <member name="P:Ruru.Net.InternetCheck.GetLocalIPHost">
+            <summary>
+            Get Local IP
+            </summary>
+        </member>
+        <member name="T:Ruru.Net.MailSendManager">
+            <summary>
+            메일 발송 도우미
+            </summary>
         </member>
         <member name="P:Ruru.Net.MailSendManager.Credentials">
             <summary>
@@ -113,136 +209,40 @@
             <value>기본 자격 증명이 사용되면 true이고, 그렇지 않으면 false입니다. 기본값은 false입니다.</value>
             <exception cref="T:System.InvalidOperationException">전자 메일을 보내는 동안 이 속성 값을 변경한 경우</exception>
         </member>
-        <member name="T:Ruru.Net.InternetCheck">
-            <summary>
-            인터넷 연결여부 체크
-            </summary>
-        </member>
-        <member name="P:Ruru.Net.InternetCheck.IsInternetConnected">
-            <summary>
-            인터넷 연결여부
-            </summary>
-        </member>
-        <member name="P:Ruru.Net.InternetCheck.GetLocalIPHost">
-            <summary>
-            Get Local IP
-            </summary>
-        </member>
-        <member name="T:Ruru.Net.DnsRecordType">
-            <summary>
-            DNS 레코드 쿼리 방식
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsRecordType.SRV">
-            <summary>
-            SRV 레코드
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsRecordType.A">
-            <summary>
-            호스트 레코드
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsRecordType.CNAME">
-            <summary>
-            ALIAS 레코드
-            </summary>
-        </member>
-        <member name="T:Ruru.Net.DnsUtil">
-            <summary>
-            DNS 관련 명령어 실행
-            </summary>
-        </member>
-        <member name="M:Ruru.Net.DnsUtil.#ctor">
+        <member name="M:Ruru.Net.MailSendManager.#ctor">
             <summary>
             기본 생성자
             </summary>
         </member>
-        <member name="M:Ruru.Net.DnsUtil.OcsDnsRun(System.String)">
+        <member name="M:Ruru.Net.MailSendManager.#ctor(System.String)">
             <summary>
-            DNS 쿼리로 OCS 관련 DNS 레코드 조회
+            지정된 호스트에 접속합니다.
             </summary>
-            <param name="sDomain">OCS 도메인을 지정합니다.</param>
-            <returns>결과를 ArrayList로 반환합니다.</returns>
+            <param name="sHost">지정된 메일 발신 호스트 <see cref="T:System.String"/></param>
         </member>
-        <member name="T:Ruru.Net.DnsQuery">
+        <member name="M:Ruru.Net.MailSendManager.#ctor(System.String,System.Int32)">
             <summary>
-            DNS Query에 대한 데이터 구조
+            지정된 호스트와 포트에 접속합니다.
             </summary>
+            <param name="sHost">지정된 메일 발신 호스트 <see cref="T:System.String"/></param>
+            <param name="iPort">지정된 메일 발신 포트 <see cref="T:System.Int32"/></param>
         </member>
-        <member name="M:Ruru.Net.DnsQuery.#ctor(Ruru.Net.DnsRecordType,System.String)">
+        <member name="M:Ruru.Net.MailSendManager.SendMail(System.Net.Mail.MailMessage)">
             <summary>
-            기본 생성자로 DNS QueryType과 레코드를 지정합니다.
+            배달용 SMTP 서버로 지정된 메시지를 보냅니다.
             </summary>
-            <param name="i_recordType"></param>
-            <param name="i_record"></param>
+            <param name="message">보낼 메시지가 들어 있는 <see cref="T:System.Net.Mail.MailMessage"/>입니다.</param>
+            <returns>성공 여부를 알려주는 <see cref="T:System.Boolean"/> 값입니다.</returns>
         </member>
-        <member name="P:Ruru.Net.DnsQuery.QueryType">
+        <member name="M:Ruru.Net.MailSendManager.SendMail(System.String,System.String,System.String,System.String)">
             <summary>
-            DNS Query의 타입을 지정합니다.
+            배달용 SMTP 서버로 지정된 전자 메일 메시지를 보냅니다. 메시지의 보낸 사람, 받는 사람, 제목 및 메시지 본문은 <see cref="T:System.String"/> 개체를 사용하여 지정됩니다.
             </summary>
-        </member>
-        <member name="P:Ruru.Net.DnsQuery.Record">
-            <summary>
-            DNS Queyr의 레코드를 지정합니다.
-            </summary>
-        </member>
-        <member name="T:Ruru.Net.DnsResult">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsResult.foundRecord">
-            <summary>
-            찾은 레코드
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsResult.hostname">
-            <summary>
-            호스트명
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsResult.ip">
-            <summary>
-            IP주소
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsResult.port">
-            <summary>
-            포트번호
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsResult.priority">
-            <summary>
-            중요도
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsResult.query">
-            <summary>
-            쿼리
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.DnsResult.weight">
-            <summary>
-            Weight
-            </summary>
-        </member>
-        <member name="T:Ruru.Net.ParseDnsResult">
-            <summary>
-            DNS 결과 분석
-            </summary>
-        </member>
-        <member name="F:Ruru.Net.ParseDnsResult.m_dnsResult">
-            <summary>
-            DNS 조회 결과
-            </summary>
-        </member>
-        <member name="M:Ruru.Net.ParseDnsResult.#ctor(Ruru.Net.DnsQuery,System.String)">
-            <summary>
-            DNS 조회 결과 분석
-            </summary>
-            <param name="i_dnsQuery"></param>
-            <param name="i_nslookupResults"></param>
+            <param name="from">메시지의 보낸 사람 주소 정보가 들어 있는 <see cref="T:System.String"/>입니다.</param>
+            <param name="recipients">메시지를 보낼 대상 주소가 들어 있는 입니다.</param>
+            <param name="subject">메시지의 제목 줄이 들어 있는 <see cref="T:System.String"/>입니다.</param>
+            <param name="body">메시지 본문이 들어 있는 <see cref="T:System.String"/>입니다.</param>
+            <returns>성공 여부를 알려주는 <see cref="T:System.Boolean"/> 값입니다.</returns>
         </member>
         <member name="T:Ruru.Net.NetworkConnection">
             <summary>

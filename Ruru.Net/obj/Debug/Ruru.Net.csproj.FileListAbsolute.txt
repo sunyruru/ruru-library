@@ -32,3 +32,12 @@ F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\obj\Debug\ResolveAssemblyR
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.dll
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.pdb
 R:\Dev\Library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.XML
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.XML
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.dll
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\bin\Debug\Ruru.Net.pdb
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\bin\Debug\Ruru.Common.dll
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\bin\Debug\Ruru.Common.pdb
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\bin\Debug\Ruru.Common.xml
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.csprojResolveAssemblyReference.cache
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.dll
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Net\obj\Debug\Ruru.Net.pdb

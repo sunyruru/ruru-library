@@ -18,3 +18,8 @@ F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.XML\bin\Debug\Ruru.XML.pdb
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.XML\obj\Debug\ResolveAssemblyReference.cache
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.XML\obj\Debug\Ruru.XML.dll
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.XML\obj\Debug\Ruru.XML.pdb
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.XML\bin\Debug\Ruru.XML.dll
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.XML\bin\Debug\Ruru.XML.pdb
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.XML\obj\Debug\Ruru.XML.csprojResolveAssemblyReference.cache
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.XML\obj\Debug\Ruru.XML.dll
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.XML\obj\Debug\Ruru.XML.pdb

@@ -32,3 +32,11 @@ F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Common\obj\Debug\GenerateResou
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Common\obj\Debug\ResGen.write.1.tlog
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.dll
 F:\backup\ruru\Dev\Ruru-Library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.pdb
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Common\bin\Debug\Ruru.Common.XML
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Common\bin\Debug\Ruru.Common.dll
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Common\bin\Debug\Ruru.Common.pdb
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.csprojResolveAssemblyReference.cache
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.Resources.resources
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.csproj.GenerateResource.Cache
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.dll
+D:\DEV\GitHub\ruru-library\ruru-library\Ruru.Common\obj\Debug\Ruru.Common.pdb
